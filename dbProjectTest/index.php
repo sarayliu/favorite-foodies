@@ -1,6 +1,11 @@
 <?php
+require("connect-db.php");
+?>
+
+<?php
 session_start();
-//Link:
+// https://www.cs.virginia.edu/~syl5fr/favorite-foodies/dbProjectTest/index.php
+// https://www.cs.virginia.edu/~syl5fr/favorite-foodies/dbProjectTest/index.php?command=NULL
 
 // Register the autoloader
 spl_autoload_register(function($classname) {
@@ -10,8 +15,14 @@ spl_autoload_register(function($classname) {
 
 // Parse the query string for command
 $command = "login";
-if (isset($_GET["command"]))
+echo $command;
+echo "\n";
+echo $_GET['command'];
+echo "\n";
+if (isset($_GET["command"])) {
+    echo "command is set\n";
     $command = $_GET["command"];
+}
 
 // If the user's email is not set in the cookies, then it's not
 // a valid session (they didn't get here from the login page),
@@ -23,4 +34,5 @@ if (!isset($_SESSION["email"])) {
 
 // Instantiate the controller and run
 $PC = new ProjectController($command);
-// $PC->run();
+$PC->run();
+?>

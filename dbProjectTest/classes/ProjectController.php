@@ -40,6 +40,7 @@ class ProjectController {
     }
 
     private function login() {
+        echo "in login function"
         $error_msg = "";
         if (isset($_POST["email"])) 
         {
