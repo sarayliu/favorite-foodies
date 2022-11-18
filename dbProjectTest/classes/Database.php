@@ -1,29 +1,17 @@
 <?php
 
 class Database {
-    private $mysqli;
+    private $pdo;
 
-    public function __construct() {
-        mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
-        $this->mysqli = new mysqli(Config::$db["host"], 
-                Config::$db["user"], Config::$db["pass"], 
-                Config::$db["database"]);
-    }
+    public function __construct($host, $user, $pass, $db) {
+        $username = 'ssi3ka'; 
+        $password = 'Fall2022';
+        $host = 'mysql01.cs.virginia.edu';
+        $dbname = 'ssi3ka';
+        $dsn = "mysql:host=$host;dbname=$dbname";
 
-    public function query($query, $bparam=null, ...$params) {
-        $stmt = $this->mysqli->prepare($query);
+        // $this->pdo = new PDO($dsn, $username, $password);
+        return new PDO($dsn, $username, $password); //$this->pdo;
 
-        if ($bparam != null)
-            $stmt->bind_param($bparam, ...$params);
-
-        if (!$stmt->execute()) {
-            return false;
-        }
-
-        if (($res = $stmt->get_result()) !== false) {
-            return $res->fetch_all(MYSQLI_ASSOC);
-        }
-
-        return true;
     }
 }
