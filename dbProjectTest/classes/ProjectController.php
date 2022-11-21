@@ -18,7 +18,8 @@ class ProjectController {
         $this->db = include("connect-db.php");
         // $this->DB = $db;//new Database($host, $uname, $pass, $dbname);
         // $this->db = new Database();
-        // echo "you are connected to the database";
+        // echo "you are connected to the database\n";
+        // echo $this->db;
         // try {
         //     $db = new PDO($dsn, $username, $password);
         //   } catch (Exception $e) {
@@ -66,20 +67,22 @@ class ProjectController {
             $email = $_POST["email"];
             $thing = $this->validateEmail($email);
             if($thing == true){
-                echo "email is valid";
+                echo "email is valid\n";
                 // $data = $this->db->query("select * from users where email = ?;", $_POST["email"]);
                 try{
                     $query = "SELECT * FROM users WHERE email = :email";
-                    echo "after query string";
-                    $statement =  $this->$db->prepare($query);
-                    echo "after prepare";
+                    echo "after query string\n";
+                    // echo $this->db;
+                    echo "after printing db\n";
+                    $statement =  $this->db->prepare($query);
+                    echo "after prepare\n";
                     $statement->bindValue(':email', $email);
-                    echo "after bind value";
+                    echo "after bind value\n";
                     $statement->execute();
-                    echo "after exec";
+                    echo "after exec\n";
                     $result = $statement->fetchAll();
                     $data = $result;
-                    echo "after data = result";
+                    echo "after data = result\n";
                 }
                 catch (PDOExcption $e){
                     echo $e->getMessage();
@@ -91,10 +94,10 @@ class ProjectController {
                 catch (Exception $e){
                     echo "in catch exception  " . $e->getMessage();
                 }
-                echo "after query in controlelr";
+                echo "after query in controller\n";
                 if ($data === false) 
                 {
-                    echo "dtaa === flase";
+                    echo "data === false\n";
                     $error_msg = "Error checking for user";
                 } 
                 else if (!empty($data)) 
@@ -114,14 +117,18 @@ class ProjectController {
                     // TODO: input validation
                     //       PHP provides password_hash() and password_verify()
                     //       to provide password verification
-                    echo "no user found, so insert";
+                    echo "no user found, so insert\n";
                     // $db = new Database($host, $uname, $pass, $dbname);
                     $query = "INSERT INTO users VALUES (:a, :b, :c)";
-                    $statement =  $this->$db->prepare($query);
+                    $statement =  $this->db->prepare($query);
+                    echo "after insert query\n";
                     $statement->bindValue(':a', $_POST["username"]);
+                    echo "after bind a\n";
                     $statement->bindValue(':b', password_hash($_POST["password"], PASSWORD_DEFAULT));
+                    echo "after bind b\n";
                     $statement->bindValue(':c', $_POST["email"]);
                     $statement->execute();
+                    echo "after insert execute\n";
                     $result = $statement->fetchAll();
                     $insert = $result;
                     echo "after insert";
