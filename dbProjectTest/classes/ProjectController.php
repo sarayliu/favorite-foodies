@@ -1,6 +1,8 @@
 
 <?php
 
+require("PasswordHash.php");
+
 // global $db;
 class ProjectController {
     private $command;
@@ -67,22 +69,25 @@ class ProjectController {
             $email = $_POST["email"];
             $thing = $this->validateEmail($email);
             if($thing == true){
-                echo "email is valid\n";
+                echo "email is valid<br>";
+                $hasher = new PasswordHash(8, false);
+
                 // $data = $this->db->query("select * from users where email = ?;", $_POST["email"]);
                 try{
                     $query = "SELECT * FROM users WHERE email = :email";
-                    echo "after query string\n";
+                    echo "after query string<br>";
                     // echo $this->db;
-                    echo "after printing db\n";
+                    echo "after printing db<br>";
                     $statement =  $this->db->prepare($query);
-                    echo "after prepare\n";
+                    echo "after prepare<br>";
                     $statement->bindValue(':email', $email);
-                    echo "after bind value\n";
+                    echo "after bind value<br>";
                     $statement->execute();
-                    echo "after exec\n";
+                    echo "after exec<br>";
                     $result = $statement->fetchAll();
                     $data = $result;
-                    echo "after data = result\n";
+                    echo "after data = result<br>";
+                    echo "$data";
                 }
                 catch (PDOExcption $e){
                     echo $e->getMessage();
@@ -94,16 +99,17 @@ class ProjectController {
                 catch (Exception $e){
                     echo "in catch exception  " . $e->getMessage();
                 }
-                echo "after query in controller\n";
+                echo "after query in controller<br>";
                 if ($data === false) 
                 {
-                    echo "data === false\n";
+                    echo "data === false<br>";
                     $error_msg = "Error checking for user";
                 } 
                 else if (!empty($data)) 
                 {
                     echo "!empty(data)";
-                    if (password_verify($_POST["password"], $data[0]["password"])) {
+                    if ($hasher->CheckPassword($_POST['password'], $hasher->HashPassword($_POST['password']))) {
+                        echo "Inside password verification statement<br>";
                         $_SESSION["username"] = $data[0]["username"]; 
                         setcookie("username", $data[0]["username"], time() + 3600);
                         $_SESSION["email"] = $data[0]["email"];
@@ -117,18 +123,19 @@ class ProjectController {
                     // TODO: input validation
                     //       PHP provides password_hash() and password_verify()
                     //       to provide password verification
-                    echo "no user found, so insert\n";
+                    echo "no user found, so insert<br>";
                     // $db = new Database($host, $uname, $pass, $dbname);
                     $query = "INSERT INTO users VALUES (:a, :b, :c)";
                     $statement =  $this->db->prepare($query);
-                    echo "after insert query\n";
+                    echo "after insert query<br>";
                     $statement->bindValue(':a', $_POST["username"]);
-                    echo "after bind a\n";
-                    $statement->bindValue(':b', password_hash($_POST["password"], PASSWORD_DEFAULT));
-                    echo "after bind b\n";
+                    echo "after bind a (username) <br>";
+
+                    $statement->bindValue(':b', $hasher->HashPassword($_POST['password']));
+                    echo "after bind b<br>";
                     $statement->bindValue(':c', $_POST["email"]);
                     $statement->execute();
-                    echo "after insert execute\n";
+                    echo "after insert execute<br>";
                     $result = $statement->fetchAll();
                     $insert = $result;
                     echo "after insert";
