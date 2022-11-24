@@ -194,12 +194,57 @@
             <div class="modal-content" id="innerModalContent">
               <template id='recipeInfoTemplate'>
               <div class="modal-header">
-                <h4 class="modal-title">{{title}}</h4>
                 <button type="button" class="btn-close close-modal"></button>
               </div>
 
               <div class="modal-body">
-                {{summary}}
+                <h3 class="text-center modal-title">{{title}}</h3>
+              <div class="small d-flex justify-content-center mt-4">
+              <div class="d-flex align-items-center me-3">
+              <svg xmlns="http://www.w3.org/2000/svg" 
+                   width="16" 
+                   height="16" 
+                   fill="currentColor" 
+                   class="bi bi-people-fill mx-1" 
+                   viewBox="0 0 16 16">
+                   <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7Zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 
+                   6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 
+                   1h4.216ZM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/>
+              </svg>
+                <p class="mb-0">{{servings}}</p>
+              </div>
+              <div class="d-flex align-items-center me-3">
+              <svg xmlns="http://www.w3.org/2000/svg" 
+                   width="20" 
+                   height="20" 
+                   fill="currentColor" 
+                   class="bi bi-clock-fill mx-1" 
+                   viewBox="0 0 16 16">
+                   <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 
+                   0 0 0 .496-.868L8 8.71V3.5z"/>
+              </svg>
+                <p class="mb-0">{{readyInMinutes}} min</p>
+              </div>
+              <div class="d-flex align-items-center me-3">
+              <svg xmlns="http://www.w3.org/2000/svg" 
+                   width="20" 
+                   height="20" 
+                   fill="currentColor" 
+                   class="bi bi-hand-thumbs-up-fill mx-1" 
+                   viewBox="0 0 16 16">
+                   <path d="M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 
+                   2.511.062 4.51a9.84 9.84 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 
+                   1.273.184.532.16 1.162-.234 1.733.058.119.103.242.138.363.077.27.113.567.113.856 0 
+                   .289-.036.586-.113.856-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.163 3.163 0 0 
+                   1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 
+                   16H8c-.605 0-1.07-.081-1.466-.218a4.82 4.82 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 
+                   14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 
+                   1.039-1.639.199-.575.356-1.539.428-2.59z"/>
+               </svg>
+                <p class="mb-0">{{aggregateLikes}}</p>
+              </div>
+              </div>
+
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-danger close-modal">Close</button>
