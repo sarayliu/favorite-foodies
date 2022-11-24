@@ -27,6 +27,7 @@
     <!-- if you choose to use CDN for CSS bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" 
       integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous"> 
+    <link href="styles/main.css" rel="stylesheet"> 
     <!-- 
     Use a link tag to link an external resource. A rel (relationship) specifies relationship between the current document and the linked resource. 
     -->
@@ -80,14 +81,23 @@
       </div>
 
       <!-- Searchbar -->
-      <form id="form">
+      <!--<form id="form">
           <input
               type="text"
               id="search"
               placeholder="Searchbar"
               class="search"
           />
-      </form>
+      </form>-->
+      <div class="d-flex flex-start mx-4">
+      <input
+              type="text"
+              id="search"
+              placeholder="Searchbar"
+              class="search mx-2"
+          />
+      <button id="searchButton">Search</button>
+    </div>
     </nav>
 
     <!-- Media heading -->
@@ -102,7 +112,7 @@
     </div>
   
     <!-- Accordion with Info -->
-    <div class="accordion" id="accordionExample">
+    <div class="accordion my-3" id="accordionExample">
       <div class="accordion-item">
         <h2 class="accordion-header" id="headingOne">
           <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" 
@@ -143,9 +153,61 @@
     </div>
 
     <!-- this div is for the list of foods (layed out in a grid format?)-->
-    <div id="content" class="foodArea">
-        <h2 style="text-align: center;"> THIS AREA WILL BE WHERE FOOD CHOICES ARE DISPLAYED FROM API </h2>
-    </div>
+    <div id="content" class="row mx-3">
+      <template id='recipeCardTemplate'>
+      <div class="col-md-4 col-sm-6 col-lg-3 my-2">
+          <div class="p-2 card m-1 bg-dark text-light recipeCard">
+            <img
+              class="card-img-top"
+              src="{{image}}"
+            />
+            <div class="card-body text-center">
+              <h5 class="card-title">{{title}}</h5>
+              <hr class="bg-light"/>
+              <button
+                data-id="{{id}}"
+                class="btn bg-light btn-sm mb-3 mt-2 w-big view-info"
+              >
+                View Recipe
+            </button>
+            </div class="d-flex justify-content-end">
+              <svg xmlns="http://www.w3.org/2000/svg"
+                  data-id="favorite_{{id}}"
+                  type="button" 
+                  width="16" 
+                  height="16" 
+                  fill="white" 
+                  class="bi bi-heart-fill favorite" 
+                  viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" 
+                        d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
+                  />
+              </svg>
+          </div>
+      </div>
+      </template>
+  </div>
+
+        <!-- This is where the modal code goes (might need to use templates here too) -->
+        <div class="modal hide" id="myModal">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content" id="innerModalContent">
+              <template id='recipeInfoTemplate'>
+              <div class="modal-header">
+                <h4 class="modal-title">{{title}}</h4>
+                <button type="button" class="btn-close close-modal"></button>
+              </div>
+
+              <div class="modal-body">
+                {{summary}}
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger close-modal">Close</button>
+              </div>
+              </template>
+            </div>
+          </div>
+        </div> 
 
     <center>
         <footer class="primaryFooter containerClass"> <!-- class="text-center bg-light text-muted p-1 fixed-bottom mt-5"> -->
@@ -156,8 +218,9 @@
         </footer>
     </center>
     <!-- 4. include bootstrap Javascript-->
-    <script src="script.js" defer></script>
-
+    <script src="scriptMod.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" 
       integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 
