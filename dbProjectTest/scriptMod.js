@@ -1,4 +1,4 @@
-const API_KEY = 'ac637448cb1547a283e153c9fa42c162'; // Insert your API key here
+const API_KEY = ''; // Insert your API key here
 const NUM_RESULTS = 8;
 const API_BASE_URL = 'https://api.spoonacular.com/recipes/'
 const API_SEARCH_URL = API_BASE_URL + 'complexSearch?apiKey=' + API_KEY + '&number=' + NUM_RESULTS + '&query=';
