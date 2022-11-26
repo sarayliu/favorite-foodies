@@ -139,6 +139,19 @@
                   <li>enter instructions here</li>
               </ul>
               <strong>We hope you enjoy your foodie experience!</strong>
+              <svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='600' width='820'>
+
+                <script type="text/ecmascript"><![CDATA[
+                    function changerect(evt) {
+                      var svgobj=evt.target;
+                      svgobj.style.opacity= 0.3;
+                      svgobj.setAttribute ('x', 300);
+                    }
+                  ]]>
+                </script>
+
+                <rect onclick='changerect(evt)' style='fill:blue;opacity:1' x='10' y='30' width='100'height='100' />
+              </svg>
           </div>
         </div>
       </div>
@@ -176,13 +189,15 @@
                   type="button" 
                   width="16" 
                   height="16" 
-                  fill="white" 
+                  fill="{{fillcolor}}" 
                   class="bi bi-heart-fill favorite" 
-                  viewBox="0 0 16 16">
-                  <path fill-rule="evenodd" 
+                  viewBox="0 0 16 16"
+                  >
+                  <path fill-rule="evenodd"
                         d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
                   />
               </svg>
+              <p>Rating: {{rating}}</p>
           </div>
       </div>
       </template>

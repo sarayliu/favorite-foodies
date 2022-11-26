@@ -48,14 +48,14 @@
             </div>
 
             <!-- Searchbar -->
-            <form id="form">
+            <!--<form id="form">
                 <input
                     type="text"
                     id="search"
                     placeholder="Searchbar"
                     class="search"
                 />
-            </form>
+            </form>-->
         </nav>
 
         <div class="container" style="margin-top: 15px;">
