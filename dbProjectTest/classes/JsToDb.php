@@ -35,7 +35,7 @@
         echo json_encode($aResult);
     }
     if($funcName == "add") {
-        $query = "select food_name from food where url = :url;";
+        $query = "SELECT food_name FROM food WHERE url = :url;";
         $statement =  $db->prepare($query);
         $statement->bindValue(':url', $url);
         $statement->execute();
@@ -52,6 +52,35 @@
             $statement->execute();
             $result = $statement->fetchAll();
         }
+        // we need to insert into recipe and recipe_ingredients as well when we call add
+        $query = "SELECT serving_size FROM recipe WHERE url = :url";
+        $statement = $db->prepare($query);
+        $statement->bindValue(':url', $url);
+        $statement->execute();
+        $result = $statement->fetchAll();
+        if(empty($result[0])) {
+            // adding into recipe
+            $query = "INSERT INTO recipe VALUES (:a, :b, :c)";
+            $statement = $db->prepare($query);
+            $statement->bindValue(':a', $url);
+            $statement->bindValue(':b', $_POST['serving_size']);
+            $statement->bindValue(':c', $_POST['instructions']);
+            $statement->execute();
+            $result = $statement->fetchAll();
+
+            //adding into recipe_ingredients
+            $ingredients = json_decode($_POST['ingredients'], true);
+            foreach ($ingredients as $ingredient) {
+                $ing_name = $ingredient['original'];
+                $query = "INSERT INTO recipe_ingredients VALUES (:a, :b)";
+                $statement = $db->prepare($query);
+                $statement->bindValue(':a', $url);
+                $statement->bindValue(':b', $ing_name);
+                $statement->execute();
+                $result = $statement->fetchAll();
+            }
+        }
+
         if($fav == "yes") {
             $query = "INSERT INTO has_favorite VALUES (:a, :b)";
             $statement =  $db->prepare($query);

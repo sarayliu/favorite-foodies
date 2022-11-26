@@ -48,125 +48,120 @@
 
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-sm navbar-custom border-bottom-0">
+    <nav class="navbar navbar-expand-sm navbar-custom border-bottom-0 bg-dark text-light">
       <a class="navbar-brand mb-0 h1" href="home.html" aria-label="home"></a>
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ11PiZaa5CEa4xTC3yYqCWR_GNtVArU7_ruh5sViBUb6y5p8unqM_rtwQjyP1FizulePg&usqp=CAU" 
       style="width:3%" alt="nav img">
       <nav class="navbar navbar-dark navbar-custom border-bottom-0">
-          <a class="navbar-brand mb-0 h1" href="home.html" aria-label="home"></a>
-          <a class="navbar-brand mb-0 h1" href="home.html" aria-label="home" style="color: black;">FavoriteFoodies</a> 
+          <a class="navbar-brand mb-0 h1" href="?command=homePage" aria-label="home"></a>
+          <a class="navbar-brand mb-0 h1" href="?command=homePage" aria-label="home">FavoriteFoodies</a> 
       </nav>
       <div class="navbar-collapse">
           <ul class="navbar-nav mr-auto">
               <li class="nav-item">
                   <!-- <a class="nav-link text-dark" href="home.html"> Home </a> --> 
-                  <a class="nav-link text-dark btn btn-default" href="?command=homePage">Home</a>
+                  <a class="nav-link btn btn-default text-light" href="?command=homePage">Home</a>
 
               </li>
              
               <li class="nav-item">
                   <!-- <a class="nav-link text-dark" href="seeReviews.php"> See Reviews </a> -->
-                  <a class="nav-link text-dark btn btn-default" href="?command=seeReviews">See Reviews</a>
+                  <a class="nav-link btn btn-default text-light" href="?command=seeReviews">See Reviews</a>
 
               </li>
               <li class="nav-item">
                   <!-- <a class="nav-link text-dark" href="editInfo.html"> Edit Information </a> -->
-                  <a class="nav-link text-dark btn btn-default" href="?command=editInfo">Edit/Update User Info</a>
+                  <a class="nav-link btn btn-default text-light" href="?command=editInfo">Edit/Update User Info</a>
 
               </li>
               <li class="nav-item">
-                  <a class="nav-link text-dark btn btn-danger" href="?command=logout">Logout</a>
+                  <a class="nav-link btn btn-danger text-light" href="?command=logout">Logout</a>
               </li>
           </ul>
       </div>
 
-      <!-- Searchbar -->
-      <!--<form id="form">
-          <input
-              type="text"
-              id="search"
-              placeholder="Searchbar"
-              class="search"
-          />
-      </form>-->
       <div class="d-flex flex-start mx-4">
       <input
               type="text"
               id="search"
               placeholder="Searchbar"
-              class="search mx-2"
+              class="search mx-2 form-control"
           />
-      <button id="searchButton">Search</button>
+      <button id="searchButton" class="btn bg-success text-light">Search</button>
     </div>
     </nav>
 
     <!-- Media heading -->
+    <div class="container">
     <div class="media justify-content-center">
-        <div class="media-body">
-            <h3 class="mt-0" style="text-align: center;">Hello <?=$user["username"]?>!</h3>
-            <h4 class="mt-0" style="text-align: center;">Welcome to FavoriteFoodies</h4>
+        <div class="media-body text-center">
+            <h2 class="m-4">Hello <?=$user["username"]?>, welcome to <b><mark>FavoriteFoodies</mark></b>!</h2>
         </div>
-        <img class="mr-3 img-fluid img-responsive center-block d-block mx-auto" 
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ11PiZaa5CEa4xTC3yYqCWR_GNtVArU7_ruh5sViBUb6y5p8unqM_rtwQjyP1FizulePg&usqp=CAU" 
-          height=100 width = 500 alt="media heading">
+
+        <div class="d-flex flex-start my-4">
+        <div class="mx-2">
+              <img src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?cs=srgb&dl=pexels-ella-olsson-1640777.jpg&fm=jpg" 
+                   class="d-block w-100 center-block mx-auto opacity-75 border border-dark"
+                   height=300
+                   alt="media heading">
+            </div>
+            <div class="mx-0">
+              <img src="https://cdn.vox-cdn.com/thumbor/bif3U7XKUqWpOUv91_fXLfzsIx8=/0x0:6000x4000/1200x675/filters:focal(2520x1520:3480x2480)/cdn.vox-cdn.com/uploads/chorus_image/image/71262429/Le_Fantome.0.jpg" 
+                   class="d-block w-100 center-block mx-auto opacity-75 border border-dark" 
+                   height=300 
+                   alt="media heading">
+            </div>
+            <div class="mx-2">
+              <img src="https://media.istockphoto.com/id/497959594/photo/fresh-cakes.jpg?s=612x612&w=0&k=20&c=T1vp7QPbg6BY3GE-qwg-i_SqVpstyHBMIwnGakdTTek=" 
+                   class="d-block w-100 center-block mx-auto opacity-75 border border-dark" 
+                   height=300 
+                   alt="media heading">
+            </div>
+        </div>
+        
     </div>
   
     <!-- Accordion with Info -->
     <div class="accordion my-3" id="accordionExample">
       <div class="accordion-item">
         <h2 class="accordion-header" id="headingOne">
-          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" 
+          <button class="accordion-button bg-dark text-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" 
             aria-controls="collapseOne">
             Brief Statement
           </button>
         </h2>
         <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-          <div class="accordion-body">
+          <div class="accordion-body bg-light">
             <strong>Welcome to FavoriteFoodies.</strong> This website allows [enter desc here]!
           </div>
         </div>
       </div>
       <div class="accordion-item">
         <h2 class="accordion-header" id="headingTwo">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" 
+          <button class="accordion-button collapsed bg-dark text-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" 
             aria-controls="collapseTwo">
             How-To: About this Website
           </button>
         </h2>
         <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-          <div class="accordion-body">
+          <div class="accordion-body bg-light">
               <ul>
                   <li>enter instructions here</li>
               </ul>
               <strong>We hope you enjoy your foodie experience!</strong>
-              <svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='600' width='820'>
-
-                <script type="text/ecmascript"><![CDATA[
-                    function changerect(evt) {
-                      var svgobj=evt.target;
-                      svgobj.style.opacity= 0.3;
-                      svgobj.setAttribute ('x', 300);
-                    }
-                  ]]>
-                </script>
-
-                <rect onclick='changerect(evt)' style='fill:blue;opacity:1' x='10' y='30' width='100'height='100' />
-              </svg>
           </div>
         </div>
       </div>
     </div>
-
-      <br>
-      <br>
-
+    <br>
     <!--Filter Buttons-->
     <div class="justify-content: center;">
       
     </div>
+    <hr />
 
     <!-- this div is for the list of foods (layed out in a grid format?)-->
-    <div id="content" class="row mx-3">
+    <div id="content" class="row mx-3 bg-light">
       <template id='recipeCardTemplate'>
       <div class="col-md-4 col-sm-6 col-lg-3 my-2">
           <div class="p-2 card m-1 bg-dark text-light recipeCard">
@@ -176,6 +171,7 @@
             />
             <div class="card-body text-center">
               <h5 class="card-title">{{title}}</h5>
+              <p class="text-muted card-title">Rating: {{rating}}</p>
               <hr class="bg-light"/>
               <button
                 data-id="{{id}}"
@@ -183,7 +179,8 @@
               >
                 View Recipe
             </button>
-            </div class="d-flex justify-content-end">
+            </div class="d-flex flex-row">
+            <div>
               <svg xmlns="http://www.w3.org/2000/svg"
                   data-id="favorite_{{id}}"
                   type="button" 
@@ -197,7 +194,7 @@
                         d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
                   />
               </svg>
-              <p>Rating: {{rating}}</p>
+                  </div>
           </div>
       </div>
       </template>
@@ -268,7 +265,7 @@
             </div>
           </div>
         </div> 
-
+                  </div>
     <center>
         <footer class="primaryFooter containerClass"> <!-- class="text-center bg-light text-muted p-1 fixed-bottom mt-5"> -->
             <small class="copyrightClass">
