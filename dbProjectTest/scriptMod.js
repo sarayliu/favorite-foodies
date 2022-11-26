@@ -1,4 +1,4 @@
-const API_KEY = ''; // Insert your API key here
+const API_KEY = 'ac637448cb1547a283e153c9fa42c162'; // Insert your API key here
 const NUM_RESULTS = 1;
 const API_BASE_URL = 'https://api.spoonacular.com/recipes/'
 const API_SEARCH_URL = API_BASE_URL + 'complexSearch?apiKey=' + API_KEY + '&number=' + NUM_RESULTS + '&query=';
@@ -97,6 +97,16 @@ $('#content').delegate('.favorite', 'click', function() {
             if(cuisine == "") {
                 cuisine = "NULL";
             }
+            var instructions = recipe_info['instructions'];
+            if (instructions == null || instructions == "") {
+                var source = recipe_info['creditsText'];
+                if (source == null || source == "") {
+                    instructions = "Sorry, this recipe's instructions are unavailable.";
+                } else {
+                    instructions = 'Read the detailed instructions on ' + source;
+                }
+            }
+
             $.ajax({
                 type: 'POST',
                 url: 'classes/JsToDb.php',
@@ -109,6 +119,9 @@ $('#content').delegate('.favorite', 'click', function() {
                     health_score: recipe_info['healthScore'],
                     image: recipe_info['image'],
                     favorite: fav,
+                    instructions: instructions,
+                    serving_size: recipe_info['servings'],
+                    ingredients: JSON.stringify(recipe_info['extendedIngredients'])
                 },
                 success: function (obj) {
                     console.log(obj);
