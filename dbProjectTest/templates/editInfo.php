@@ -15,31 +15,37 @@
     </head>
     <body>
         <!-- Navbar -->
-        <nav class="navbar navbar-expand-sm navbar-custom border-bottom-0">
+        <nav class="navbar navbar-expand-sm navbar-custom border-bottom-0 bg-dark text-light">
             <a class="navbar-brand mb-0 h1" href="home.html" aria-label="home"></a>
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ11PiZaa5CEa4xTC3yYqCWR_GNtVArU7_ruh5sViBUb6y5p8unqM_rtwQjyP1FizulePg&usqp=CAU" 
             style="width:3%" alt="nav img">
             <nav class="navbar navbar-dark navbar-custom border-bottom-0">
                 <a class="navbar-brand mb-0 h1" href="home.html" aria-label="home"></a>
-                <a class="navbar-brand mb-0 h1" href="home.html" aria-label="home" style="color: black;">FavoriteFoodies</a> 
+                <a class="navbar-brand mb-0 h1" href="home.html" aria-label="home"">FavoriteFoodies</a> 
             </nav>
             <div class="navbar-collapse">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
                         <!-- <a class="nav-link text-dark" href="home.html"> Home </a> --> 
-                        <a class="nav-link text-dark btn btn-default" href="?command=homePage">Home</a>
+                        <a class="nav-link btn btn-default text-light" href="?command=homePage">Home</a>
 
                     </li>
                     
                     <li class="nav-item">
                         <!-- <a class="nav-link text-dark" href="seeReviews.php"> See Reviews </a> -->
-                        <a class="nav-link text-dark btn btn-default" href="?command=seeReviews">See Reviews</a>
+                        <a class="nav-link btn btn-default text-light" href="?command=seeReviews">See Reviews</a>
 
                     </li>
                     <li class="nav-item">
                         <!-- <a class="nav-link text-dark" href="editInfo.html"> Edit Information </a> -->
-                        <a class="nav-link text-dark btn btn-default" href="?command=editInfo">Edit/Update User Info</a>
+                        <a class="nav-link btn btn-default text-light" href="?command=editInfo">Edit/Update User Info</a>
 
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-default text-light" href="?command=allEvents">All Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-default text-light" href="?command=myEvents">My Events</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-dark btn btn-danger" href="?command=logout">Logout</a>
