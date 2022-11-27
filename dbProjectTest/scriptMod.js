@@ -14,11 +14,28 @@ function addRecipe(recipe) {
     $recipes.append(Mustache.render(recipeCardTemplate, recipe));
 }
 
+function parseInstructions(recipe_info) {
+  var instructions = recipe_info['instructions'];
+  if (!instructions) {
+      var source = recipe_info['creditsText'];
+      if (!source) {
+          instructions = "Sorry, this recipe's instructions are unavailable.";
+      } else {
+          console.log("In the else block in parseInstructions");
+          var sourceUrl = recipeInfo['sourceUrl'];
+          var hrefElem = "<a href=\"" + sourceUrl + "\">" + source + "</a>";
+          instructions = 'Read the detailed instructions on ' + hrefElem;
+      }
+  }
+  return instructions;
+}
+
 function displayRecipeInfo(recipe_info) {
-    console.log("In displayRecipeInfo()");
-    $myModal.empty();
-    $myModal.append(Mustache.render(recipeInfoTemplate, recipe_info));
-    console.log("Finished rendering");
+  console.log("in the displayRecipeInfo() function");
+  recipe_info.instructions = parseInstructions(recipe_info);
+  console.log(recipe_info.instructions);
+  $myModal.empty();
+  $myModal.append(Mustache.render(recipeInfoTemplate, recipe_info));
 }
 
 $('#searchButton').on('click', function() {
