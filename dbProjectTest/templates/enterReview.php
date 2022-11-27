@@ -43,6 +43,12 @@
 
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link btn btn-default text-light" href="?command=allEvents">All Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-default text-light" href="?command=myEvents">My Events</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link text-dark btn btn-danger" href="?command=logout">Logout</a>
                     </li>
                 </ul>
