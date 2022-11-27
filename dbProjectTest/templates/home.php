@@ -171,7 +171,7 @@
             />
             <div class="card-body text-center">
               <h5 class="card-title">{{title}}</h5>
-              <p class="text-muted card-title">Rating: {{rating}}</p>
+              <p class="card-title">ID: {{id}}</p>
               <hr class="bg-light"/>
               <button
                 data-id="{{id}}"
@@ -179,8 +179,9 @@
               >
                 View Recipe
             </button>
-            </div class="d-flex flex-row">
-            <div>
+</div>
+            <div class="card-footer row align-items-start">
+            <div class="col-2">
               <svg xmlns="http://www.w3.org/2000/svg"
                   data-id="favorite_{{id}}"
                   type="button" 
@@ -195,8 +196,12 @@
                   />
               </svg>
                   </div>
-          </div>
-      </div>
+                  <div class="col-6">
+                    <p class="text-muted card-title">Rating: {{rating}}</p>
+                  </div>
+              </div>
+        </div>
+</div>
       </template>
   </div>
 
@@ -258,6 +263,9 @@
               </div>
 
               <hr />
+              <h4>Summary</h4>
+              <p>{{{summary}}}</p>
+              <hr />
               <h4>Ingredients</h4>
                 <ul>
                   {{#extendedIngredients}}
@@ -269,13 +277,12 @@
               <ol>
                 {{#analyzedInstructions}}
                 {{#steps}}
-                <li>{{step}}</li>
+                <li class="my-1">{{step}}</li>
                 {{/steps}}
                 {{/analyzedInstructions}}
               </ol> 
               {{^analyzedInstructions}}
               <p>{{{instructions}}}</p>
-              <p>Hello this is kinda working i think.</p>
               {{/analyzedInstructions}}
               </div>
               <div class="modal-footer">
@@ -295,7 +302,7 @@
         </footer>
     </center>
     <!-- 4. include bootstrap Javascript-->
-    <script scr="scriptMod.js" defer></script>
+    <script src="scriptMod2.js" defer></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" 
