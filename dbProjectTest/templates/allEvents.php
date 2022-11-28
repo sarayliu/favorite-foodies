@@ -67,7 +67,7 @@
     <div class="container">
     <div class="media justify-content-center">
         <div class="media-body text-center">
-            <h2 class="m-4">All Events</mark></b></h2>
+            <h2 class="m-4">All Events</h2>
         </div>
     </div>
 
