@@ -87,8 +87,8 @@
         session_start();
         // echo "session started<br></br>";
         // $query = "CREATE PROCEDURE SelectAllEvents AS SELECT * FROM event GO; EXEC SelectAllEvents; CALL SelectAllEvents();";
-        $query = "SELECT * from event;";
-        // $query = "CALL SelectAllEvents();";
+        // $query = "SELECT * from event;";
+        $query = "CALL SelectAllEvents();";
         // echo "query written<br></br>";
         // echo $db;
         // echo "db echoed<br></br>";
@@ -118,7 +118,7 @@
                     <td>$description</td>
                     <td>
                         <button class=\"btn bg-light btn-sm mb-3 mt-2 w-big\" style=\"background-color:red; border-color:blue\">
-                            Yes
+                            Yes, I want to go!
                         </button>
                     </td>
                 </tr>";
