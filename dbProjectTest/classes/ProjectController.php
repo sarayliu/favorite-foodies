@@ -49,6 +49,9 @@ class ProjectController {
             case "editInfo":
                 $this->editInfo();
                 break;
+            case "allEvents":
+                $this->allEvents();
+                break;
             case "logout":
                 $this->destroyCookies();
             case "login":
@@ -236,7 +239,6 @@ class ProjectController {
                 return $rs;
             }
         }
-
     }
 
     private function updateUserInfo() {
@@ -254,7 +256,7 @@ class ProjectController {
                 //echo "User Information Has Been Updated In Database \n";
                 return $rs;
             }
-         }
+        }
     }
 
     private function enterReview() {
@@ -273,5 +275,10 @@ class ProjectController {
         ];
         
         include("templates/editInfo.php");
+    }
+
+    private function allEvents() {
+
+        include("templates/allEvents.php");
     }
 }
