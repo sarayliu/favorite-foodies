@@ -7,11 +7,11 @@
 
     <meta name="author" content="Sara Liu">
     <meta name="description" content="home page for app, CS4750 at UVA">
-    <meta name="keywords" content="food events">
+    <meta name="keywords" content="my food events rsvp">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
       
-    <title>All Events</title>
+    <title>My Events</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" 
       integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous"> 
@@ -57,103 +57,46 @@
     <div class="container">
     <div class="media justify-content-center">
         <div class="media-body text-center">
-            <h2 class="m-4">All Events</h2>
+            <h2 class="m-4">My Events</h2>
         </div>
     </div>
 
-    <table border="0" cellspacing="2" cellpadding="2"> 
-        <tr> 
-            <td> <font face="Arial">Title</font> </td> 
-            <td> <font face="Arial">Date</font> </td> 
-            <td> <font face="Arial">Venue</font> </td> 
-            <td> <font face="Arial">Description</font> </td> 
-            <td> <font face="Arial">RSVP</font> </td>
-        </tr>
-
     <?php
-        // echo '<table border="0" cellspacing="2" cellpadding="2"> 
-        //         <tr> 
-        //             <td> <font face="Arial">Title</font> </td> 
-        //             <td> <font face="Arial">Date</font> </td> 
-        //             <td> <font face="Arial">Venue</font> </td> 
-        //             <td> <font face="Arial">Description</font> </td> 
-        //         </tr>';
-        // mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
-        // echo "in php of allEvents.php<br></br>";
-        // $db = include("../classes/connect-db.php");
         $db = include("connect-db-for-templates.php");
         // echo "connected database<br></br>";
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         session_start();
         // echo "session started<br></br>";
-        // $query = "CREATE PROCEDURE SelectAllEvents AS SELECT * FROM event GO; EXEC SelectAllEvents; CALL SelectAllEvents();";
-        // $query = "SELECT * from event;";
-        $query = "CALL SelectAllEvents();";
-        // echo "query written<br></br>";
-        // echo $db;
-        // echo "db echoed<br></br>";
+        $query = "SELECT * from rsvp WHERE username='" . $user["username"] . "';";
+        // echo "query written: " . $query . "<br></br>";
         $statement =  $db->prepare($query);
-        echo $db->error;
+        // echo $db->error;
         // echo "statement prepared<br></br>";
         $statement->execute();
+        // echo "statement executed</br>";
         // $statement->debugDumpParams();
-        // $result = $db->query($query);
         $result = $statement->fetchAll();
         // echo $result;
-        foreach($result as $row) {
-            // echo $row[0];
-            // echo "<b><h3>$row[0]</h3></b><br/>";
-            // echo "<h4>Date: $row[1]</h4><br/>";
-            $title = $row[0];
-            $date = $row[1];
-            $venue = $row[2];
-            $description = "None";
-            if(!empty($row[3])) {
-                $description = $row[3];
-            }
-            echo "<tr>
-                    <td>$title</td>
-                    <td>$date</td>
-                    <td>$venue</td>
-                    <td>$description</td>
-                    <td>
-                        <button class=\"btn bg-light btn-sm mb-3 mt-2 w-big\" style=\"background-color:red; border-color:blue\">
-                            Yes, I want to go!
-                        </button>
-                    </td>
-                </tr>";
-        // } catch(PDOException $e) {
-        //     echo "Error: " . $e->getMessage();
-        // }
-
-        // $result = $statement->setFetchMode(PDO::FETCH_ASSOC);
-        // echo "setFetchMode done<br></br>";
-        // $fetchAll = $statement->fetchAll();
-        // echo $fetchAll . "<br></br>";
-        // foreach(new TableRows(new RecursiveArrayIterator($statement->fetchAll())) as $k=>$v) {
-        //     echo $v;
-        // } catch(PDOException $e) {
-        //     echo "Error: " . $e->getMessage();
-        // }
-        // echo "</table>";
-
-        // $result = $statement->get_result();
-        // echo $result;
-        // while($row = $result->fetch_assoc()) {
-        //     echo $row;
+        if(empty($result[0])) {
+            echo "<b><h3>You are not going to any events. RSVP on the All Events tab!</h3></b><br/>";
         }
+        else {
+            foreach($result as $row) {
+                echo "<h5 style=\"text-align:center\">$row[1]</h5><br/>";
+            }
+        }
+        // echo "done displaying results";
         // $result->free();
-
-        // echo "<center>
-        //         <footer class=\"primaryFooter containerClass\">
-        //         <small class=\"copyrightClass\">
-        //             &copy; 2022 Copyright:
-        //             <a class=\"text-reset fw-bold\" >Sneha Iyer, Medha Boddu, Sara Liu, Neha Bagalkot, CS 4750 UVA</a>
-        //         </small>
-        //         </footer>
-        //     </center>";
     ?>
 
+    <center>
+        <footer class="primaryFooter containerClass">
+        <small class="copyrightClass">
+            &copy; 2022 Copyright:
+            <a class="text-reset fw-bold" >Sneha Iyer, Medha Boddu, Sara Liu, Neha Bagalkot, CS 4750 UVA</a>
+        </small>
+        </footer>
+    </center>
     <script type="module" src="scriptMod.js" defer></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
