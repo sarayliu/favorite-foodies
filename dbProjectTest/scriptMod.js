@@ -4,8 +4,8 @@ console.log("in scriptMod");
 console.log(process.env.SPOONACULAR_API_KEY); */}
 import { spoonacular_api_key } from "./env-variables.js";
 // const spoonacular_api_key = require(env-variables.js);
-console.log(spoonacular_api_key);
-const API_KEY = spoonacular_api_key; // Insert your API key here
+// console.log(spoonacular_api_key);
+const API_KEY = spoonacular_api_key;
 const NUM_RESULTS = 8;
 const API_BASE_URL = 'https://api.spoonacular.com/recipes/'
 const API_SEARCH_URL = API_BASE_URL + 'complexSearch?apiKey=' + API_KEY + '&number=' + NUM_RESULTS + '&query=';
