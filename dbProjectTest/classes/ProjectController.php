@@ -278,6 +278,7 @@ class ProjectController {
     }
 
     private function allEvents() {
+
         include("templates/allEvents.php");
     }
 }
