@@ -167,6 +167,7 @@
             if(in_array($row[0], $myEvents)) {
                 $going = true;
             }
+            // <input type=\"submit\" value=\"Yes, I want to go!\" disabled class=\"btn bg-light btn-sm mb-3 mt-2 w-big\" style=\"border-color:blue\"/>
             if($going) {
                 echo "<tr>
                     <td>$title</td>
@@ -174,8 +175,8 @@
                     <td>$venue</td>
                     <td>$description</td>
                     <td>
-                        <input type=\"submit\" value=\"Yes, I want to go!\" disabled class=\"btn bg-light btn-sm mb-3 mt-2 w-big\" style=\"border-color:blue\"/>
-                    </td>
+                        <button class='btn bg-success btn-sm mb-3 mt-2 w-big' style='background-color:green; border-color:blue' disabled>Yes, I want to go!</button>
+                        </td>
                 </tr>";
             }
             else {
@@ -197,6 +198,7 @@
                 //         <button id="rsvpButton" name=$title class="btn bg-success btn-sm mb-3 mt-2 w-big" style="background-color:green; border-color:blue">Yes, I want to go!</button>
                 //     </td>
                 // </tr>';
+                // $buttonID = 'rsvpButton' . 
                 echo "<tr>
                     <td>$title</td>
                     <td>$date</td>

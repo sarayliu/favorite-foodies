@@ -61,6 +61,7 @@
     <div class="media justify-content-center">
         <div class="media-body text-center">
             <h2 class="m-4">My Events</h2>
+            <h3 class="m-4">The events I have been to/going to:</h3>
         </div>
     </div>
 
@@ -81,11 +82,11 @@
         $result = $statement->fetchAll();
         // echo $result;
         if(empty($result[0])) {
-            echo "<b><h3>You are not going to any events. RSVP on the All Events tab!</h3></b><br/>";
+            echo "<b><h4 style='color:green'>You are not going to any events. RSVP on the All Events tab!</h4></b><br/>";
         }
         else {
             foreach($result as $row) {
-                echo "<h5 style=\"text-align:center\">$row[1]</h5><br/>";
+                echo "<h5 style=\"text-align:center; color:green\">$row[1]</h5><br/>";
             }
         }
         // echo "done displaying results";
