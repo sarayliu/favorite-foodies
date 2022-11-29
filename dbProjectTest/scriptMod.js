@@ -155,7 +155,7 @@ $myModal.delegate('.close-modal', 'click', function() {
 
 $('#rsvpButton').on('click', function() {
     // e.preventDefault();
-    console.log("in rsvpButton scriptMod.js");
+    console.log("in rsvpButton scriptMod.js"); //will print to info under Console
     $.ajax({
         type: 'POST',
         url: 'classes/JsToDb.php',
@@ -164,8 +164,15 @@ $('#rsvpButton').on('click', function() {
             title: $(this).attr('name'),
         },
         success: function(result) {
-            console.log(result);
-            alert("RSVPed to " + title);
+            // result.forEach(function (r, i) {
+            //     console.log(r, i)
+            // });
+            // for(const r of $result) {
+            //     console.log(r);
+            // }
+            // console.log(result); // Array
+            // console.log($(this)); // this is no longer the same this in data
+            alert("RSVP successful");
         },
         error: function(result) {
             alert("error with RSVP");
