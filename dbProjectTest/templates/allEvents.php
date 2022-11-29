@@ -57,7 +57,7 @@
       </div>
     </nav>
 
-    <div class="container">
+    <div id="page-container" class="container">
     <div class="media justify-content-center">
         <div class="media-body text-center">
             <h2 class="m-4">All Events</h2>
@@ -103,6 +103,7 @@
         // $result = $db->query($query);
         $result = $statement->fetchAll();
         // echo $result;
+        echo "<div id=\"content-wrap\">";
         foreach($result as $row) {
             // echo $row[0];
             // echo "<b><h3>$row[0]</h3></b><br/>";
@@ -146,17 +147,27 @@
         //     echo $row;
         }
         // $result->free();
+        echo "</table></div>";
 
-        // echo "<center>
-        //         <footer class=\"primaryFooter containerClass\">
-        //         <small class=\"copyrightClass\">
-        //             &copy; 2022 Copyright:
-        //             <a class=\"text-reset fw-bold\" >Sneha Iyer, Medha Boddu, Sara Liu, Neha Bagalkot, CS 4750 UVA</a>
-        //         </small>
-        //         </footer>
-        //     </center>";
+        echo "<center>
+                <footer id=\"footer\" class=\"primaryFooter containerClass\">
+                <small class=\"copyrightClass\">
+                    &copy; 2022 Copyright:
+                    <a class=\"text-reset fw-bold\" >Sneha Iyer, Medha Boddu, Sara Liu, Neha Bagalkot, CS 4750 UVA</a>
+                </small>
+                </footer>
+            </center>";
     ?>
 
+    <!-- <center>
+        <footer id="footer" class="primaryFooter containerClass">
+        <small class="copyrightClass">
+            &copy; 2022 Copyright:
+            <a class="text-reset fw-bold" >Sneha Iyer, Medha Boddu, Sara Liu, Neha Bagalkot, CS 4750 UVA</a>
+        </small>
+        </footer>
+    </center>     -->
+    </div>
     <script type="module" src="scriptMod.js" defer></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
