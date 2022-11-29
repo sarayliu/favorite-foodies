@@ -110,6 +110,7 @@
     }
     if($funcName == "addRSVP") {
         echo "in addRSVP function";
+        // echo "$_POST['title']"; //can't echo like this, causes error
         $query = "INSERT INTO rsvp VALUES (:a, :b);";
         $statement =  $db->prepare($query);
         $statement->bindValue(':a', $_SESSION["username"]);

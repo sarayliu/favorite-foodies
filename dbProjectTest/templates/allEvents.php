@@ -179,13 +179,31 @@
                 </tr>";
             }
             else {
+                // echo "<tr>
+                //     <td>$title</td>
+                //     <td>$date</td>
+                //     <td>$venue</td>
+                //     <td>$description</td>
+                //     <td>
+                //         <button id=\"rsvpButton\" name=\"$title\" class=\"btn bg-success btn-sm mb-3 mt-2 w-big\" style=\"background-color:green; border-color:blue\">Yes, I want to go!</button>
+                //     </td>
+                // </tr>";
+                // echo '<tr>
+                //     <td>$title</td>
+                //     <td>$date</td>
+                //     <td>$venue</td>
+                //     <td>$description</td>
+                //     <td>
+                //         <button id="rsvpButton" name=$title class="btn bg-success btn-sm mb-3 mt-2 w-big" style="background-color:green; border-color:blue">Yes, I want to go!</button>
+                //     </td>
+                // </tr>';
                 echo "<tr>
                     <td>$title</td>
                     <td>$date</td>
                     <td>$venue</td>
                     <td>$description</td>
                     <td>
-                        <button id=\"rsvpButton\" name=\"$title\" class=\"btn bg-success btn-sm mb-3 mt-2 w-big\" style=\"background-color:green; border-color:blue\">Yes, I want to go!</button>
+                        <button id='rsvpButton' name='$title' class='btn bg-success btn-sm mb-3 mt-2 w-big' style='background-color:green; border-color:blue'>Yes, I want to go!</button>
                     </td>
                 </tr>";
             }
