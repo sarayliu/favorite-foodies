@@ -69,15 +69,15 @@
         </div>
         </nav>
 
-        <div class="container" style="margin-top: 15px;">
-            <div class="row col-xs-8">
-                <h1>CS4750 Project - View Reviews</h1>
-                <h3>Hello <?=$user["username"]?>! Email: <?=$user["email"]?></h3>
-            </div>
-        </div>
 
-      
-        <button class="btn btn-primary" onclick="darkMode()">Toggle dark/gray mode</button>
+        <div class="container w-75">
+        <div class="media justify-content-center">
+        <div class="media-body text-center">
+            <h2 class="my-4">Reviews</h2>
+        </div>
+    </div>
+    <center>
+        <button class="btn btn-primary mb-4 justify-content-center" onclick="darkMode()">Toggle dark/gray mode</button>
 
         <div id="OverallDiv">
 
@@ -87,18 +87,19 @@
                     <p id="jsonObj_text"></p> get favorite food json object and put here 
                 </div>
             </div> -->
-            
             <div class="container">
-                <div class="row">
-                    <div class="col-sm-5">
+                <!-- <div class="row">
+                    <div class="col-sm-5"> -->
                     
                         <?php echo $deleteMsg; ?>
                         <div class="table-responsive">
-                            <table class="table table-bordered">
-                                <thead><tr><th>Reviews (Sorted by alphabetic order)</th>
-                                    <th>Food/Dish Name</th>
-                                    <th>Comment</th>
-
+                            <table class="table table-hover text-center w-auto">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>Reviews (Sorted by alphabetic order)</th>
+                                        <th>Food/Dish Name</th>
+                                        <th>Comment</th>
+        </tr>
                                 </thead>
                                 <tbody>
                                     <?php
@@ -108,7 +109,7 @@
                                             foreach($msg as $data)
                                             {
                                     ?>
-                                                <tr>
+                                                <tr class="table-secondary">
                                                 <td><?php echo $sn; ?></td>
                                                 <td><?php echo $data['url']; ?></td>
                                                 <td><?php echo $data['comment']; ?></td>
@@ -129,10 +130,13 @@
                                     ?> -->
                                 </tbody>
                             </table>
-                        </div>
-                    </div>
+                        <!-- </div>
+                    </div> -->
                 </div>
             </div>
+                                        </div>
+            <center>
+                <br>
  
         <center>
         <footer class="primaryFooter containerClass"> <!-- class="text-center bg-light text-muted p-1 fixed-bottom mt-5"> -->

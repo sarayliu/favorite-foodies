@@ -85,7 +85,7 @@
         $result = $statement->fetchAll();
         // echo $result;
         if(empty($result[0])) {
-            echo "<b><h4 style='color:green'>You are not going to any events. RSVP on the All Events tab!</h4></b><br/>";
+            echo "<b><h4 style='color:green' class='text-center'>You are not going to any events. RSVP on the All Events tab!</h4></b><br/>";
         }
         else {
             foreach($result as $row) {

@@ -60,7 +60,7 @@
       </div>
     </nav>
 
-    <div class="container">
+    <div class="container w-50">
     <div class="media justify-content-center">
         <div class="media-body text-center">
             <h2 class="m-4">Create an Event!</h2>
@@ -69,34 +69,34 @@
     </div>
 
     <center>
-         <form action="templates/insertEvent.php" method="post">
-            <p>
-               <label for="title">Title*:</label>
-               <input type="text" name="title" id="title" maxlength="100" required>
-            </p>
+         <form action="templates/insertEvent.php" method="post" class="my-3">
+         <div class="mb-3 mt-3">
+               <label for="title" class="form-label">Title*:</label>
+               <input type="text" name="title" id="title" maxlength="100" class="form-control" required>
+</div>
     
-            <p>
-               <label for="date">Date*:</label>
-               <input type="date" name="date" id="date" required>
-            </p>
+            <div class="mb-3 mt-3">
+               <label for="date" class="form-label">Date*:</label>
+               <input type="date" name="date" id="date" class="form-control" required>
+</div>
              
-            <p>
-               <label for="venue">Venue*:</label>
-               <input type="text" name="venue" id="venue" maxlength="100" required>
-            </p>
+            <div class="mb-3 mt-3">
+               <label for="venue" class="form-label">Venue*:</label>
+               <input type="text" name="venue" id="venue" maxlength="100" class="form-control" required>
+</div>
 
-            <p>
-               <label for="city">City*:</label>
-               <input type="text" name="city" id="city" maxlength="40" required>
-            </p>
+            <div class="mb-3 mt-3">
+               <label for="city" class="form-label">City*:</label>
+               <input type="text" name="city" id="city" maxlength="40" class="form-control" required>
+</div>
  
-            <p>
-               <label for="Description">Description (optional):</label>
-               <input type="text" name="description" id="description">
-            </p>
-            <input type="submit" value="Submit Event"><br/>
+            <div class="mb-3 mt-3">
+               <label for="Description" class="form-label">Description (optional):</label>
+               <input type="text" name="description" id="description" class="form-control">
+</div>
+            <input type="submit" value="Submit Event" class="btn btn-primary">
         </form>
-        
+        <br>
         <footer class="primaryFooter containerClass">
         <small class="copyrightClass">
             &copy; 2022 Copyright:
@@ -104,6 +104,8 @@
         </small>
         </footer>
     </center>
+    </div>
+
     <script type="module" src="scriptMod.js" defer></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
