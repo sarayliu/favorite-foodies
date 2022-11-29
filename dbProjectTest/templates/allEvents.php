@@ -177,9 +177,7 @@
                     <td>$date</td>
                     <td>$venue</td>
                     <td>$description</td>
-                    <td>
-                        <button class='btn bg-success btn-sm mb-3 mt-2 w-big' style='background-color:green; border-color:blue' disabled>Yes, I want to go!</button>
-                        </td>
+                    <td><button class='btn bg-success btn-sm mb-3 mt-2 w-big' style='background-color:green; border-color:blue' disabled>Yes, I want to go!</button></td>
                 </tr>";
             }
             else {

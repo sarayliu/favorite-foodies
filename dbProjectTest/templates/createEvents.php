@@ -96,9 +96,7 @@
             </p>
             <input type="submit" value="Submit Event"><br/>
         </form>
-    </center>
-
-    <center>
+        
         <footer class="primaryFooter containerClass">
         <small class="copyrightClass">
             &copy; 2022 Copyright:
