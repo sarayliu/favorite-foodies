@@ -199,3 +199,31 @@ $('#rsvpButton').on('click', function() {
         }
     });
 });
+
+$('#cancelRSVP').on('click', function() {
+    console.log("in cancelRSVP scriptMod.js");
+    $.ajax({
+        type: 'POST',
+        url: 'classes/JsToDb.php',
+        data: {
+            functionname: 'cancelRSVP', 
+            title: $(this).attr('name'),
+        },
+        success: function(result) {
+            // result.forEach(function (r, i) {
+            //     console.log(r, i)
+            // });
+            // for(const r of $result) {
+            //     console.log(r);
+            // }
+            // console.log(result); // Array
+            // console.log($(this)); // this is no longer the same this in data
+            // document.getElementById("rsvpButton").disabled = true;
+            // $("#rsvpButton").attr("disabled", true);
+            alert("Cancellation successful! Refresh the page to see updated disabled button");
+        },
+        error: function(result) {
+            alert("error with cancellation");
+        }
+    });
+});
