@@ -10,7 +10,8 @@
         <title>FavoriteFoodies</title>
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous"> 
-        <link rel="stylesheet" href="styles/main.css">
+        <!-- <link rel="stylesheet" href="styles/main.css"> -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 
         
     </head>
@@ -80,10 +81,15 @@
                
                 <!-- form to create new review -->
                 <form name="form2" id="form2" action="?command=seeReviews" method="post"> <!-- onsubmit="return(checkForm())"> -->
+                    <div class="form-group">
                     <label for="url">Food ID </label>
                     <input type="text" name="url" id="url">
+                    </div>
+                    <div class="form-group">
                     <label for="foodname">Food Name</label>
                     <input type="text" name="foodname" id="foodname">
+                    <small id="foodnameHelp" class="form-text text-muted">Please enter name exactly as you see it on the food card.</small>
+                    </div>
                     <p>
                         <label for="comment">Comment</label>
                         <!--<input type="text" name="comment" id="comment"> -->
@@ -92,7 +98,7 @@
         
                     <p>&nbsp;</p>
                     <p>
-                        <input type="submit" name="Submit" id="Submit" value="Submit">
+                        <input type="submit" class="btn btn-primary" name="Submit" id="Submit" value="Submit">
                     </p>
                 </form>
                 </div>
@@ -142,5 +148,6 @@
         <!-- <script src="script.js" defer></script> -->
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+
     </body>
 </html>
