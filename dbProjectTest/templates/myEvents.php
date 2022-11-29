@@ -36,6 +36,9 @@
                   <a class="nav-link btn btn-default text-light" href="?command=homePage">Home</a>
               </li>
               <li class="nav-item">
+                  <a class="nav-link btn btn-default text-light" href="?command=seeFavorites">See Favorites</a>
+                </li>
+              <li class="nav-item">
                   <a class="nav-link btn btn-default text-light" href="?command=seeReviews">See Reviews</a>
               </li>
               <li class="nav-item">
