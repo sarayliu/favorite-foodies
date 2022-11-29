@@ -5,8 +5,8 @@ console.log(process.env.SPOONACULAR_API_KEY); */}
 // import { spoonacular_api_key } from "./env-variables.js";
 // const spoonacular_api_key = require(env-variables.js);
 // console.log(spoonacular_api_key);
-const API_KEY = ''; // Insert your API key here
-const NUM_RESULTS = 1;
+const API_KEY = '90921f3219034ec79939dba1fb8c4711'; // Insert your API key here
+const NUM_RESULTS = 8;
 const API_BASE_URL = 'https://api.spoonacular.com/recipes/'
 const API_SEARCH_URL = API_BASE_URL + 'complexSearch?apiKey=' + API_KEY + '&number=' + NUM_RESULTS + '&query=';
 
@@ -97,8 +97,27 @@ $('#content').delegate('.view-info', 'click', function() {
         type: 'GET',
         url: API_BASE_URL + id + '/information?apiKey=' + API_KEY,
         success: function(recipe_info) {
-            $('#myModal').modal('show');
-            displayRecipeInfo(recipe_info);
+            $.ajax({
+                type: 'POST',
+                url: 'classes/JsToDb.php',
+                data: {
+                    functionname: 'getsize',
+                    serving_size: recipe_info['servings'],
+                },
+                success: function(recipe_fam) {
+                    if(recipe_fam == "0") {
+                        recipe_info.family = "No";
+                    }
+                    else {
+                        recipe_info.family = "Yes";
+                    }
+                    $('#myModal').modal('show');
+                    displayRecipeInfo(recipe_info);
+                },
+                error: function() {
+                    alert('An error occurred while displaying the recipe information.');
+                }
+            })
         },
         error: function() {
             alert('An error occurred while displaying the recipe information.');

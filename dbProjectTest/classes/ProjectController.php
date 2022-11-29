@@ -43,6 +43,9 @@ class ProjectController {
             case "seeReviews":
                 $this->seeReviews();
                 break;
+            case "seeFavorites":
+                $this->seeFavorites();
+                break;
             case "homePage":
                 $this->homePage();
                 break;
@@ -262,6 +265,25 @@ class ProjectController {
                 return $rs;
             }
         }
+    }
+
+    private function seeFavorites() 
+    {
+        $email = $_SESSION["email"];
+        $username = $_SESSION["username"];
+
+        $query = "SELECT * FROM has_favorite WHERE username = :uname";
+        $statement =  $this->db->prepare($query);
+        $statement->bindValue(':uname', $username);
+        $statement->execute();
+        $result = $statement->fetchAll();
+        $msg = $result;
+        $user = [
+            "username" => $_SESSION["username"],
+            "email" => $_SESSION["email"],
+        ];
+
+        include("templates/seeFavorites.php");
     }
 
     private function updateUserInfo() {
