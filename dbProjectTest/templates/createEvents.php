@@ -94,9 +94,9 @@
                <label for="Description">Description (optional):</label>
                <input type="text" name="description" id="description">
             </p>
-            <input type="submit" value="Submit Event"></br>
-         </form>
-      </center>
+            <input type="submit" value="Submit Event"><br/>
+        </form>
+    </center>
 
     <center>
         <footer class="primaryFooter containerClass">
