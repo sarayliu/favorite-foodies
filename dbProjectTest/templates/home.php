@@ -142,7 +142,7 @@
         </h2>
         <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
           <div class="accordion-body bg-light">
-            <strong>Welcome to FavoriteFoodies.</strong> This website allows [enter desc here]!
+            <strong>Welcome to FavoriteFoodies.</strong> This website allows food lovers to look at certain food recipes, favorite foods, review dishes, and rsvp to food events!
           </div>
         </div>
       </div>
@@ -156,7 +156,14 @@
         <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
           <div class="accordion-body bg-light">
               <ul>
-                  <li>enter instructions here</li>
+                  <li>Click on See Reviews to view all your reviews</li>
+                  <li>Click on Enter Review to write a review about a certain food</li>
+                  <li>Click on Edit/Update User Info to change user information</li>
+                  <li>Click on All Events to view event information and rsvp to any event</li>
+                  <li>Click on My Events to view which events you rsvp'd to</li>
+                  <li>Click on Favorites to view your favorited foods</li>
+                  <li>Click on Logout to logout</li>
+
               </ul>
               <strong>We hope you enjoy your foodie experience!</strong>
           </div>

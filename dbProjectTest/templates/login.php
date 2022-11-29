@@ -39,7 +39,7 @@
                     <h6 class="card-subtitle mb-1 text-muted text-center">Brought to you by Sneha Iyer, Medha Boddu, Sara Liu, Neha Bagalkot</h6>
                     <p class="card-text text-center">
                         Welcome to the FavoriteFoodies App! 
-                        This application is for [enter description here]. 
+                        This application is for food lovers to view, comment, and interact with foods and other foodies. 
                         To get started, enter your email, username, and password!
                     </p>
                     <!--<div class="text-center"><a class="btn btn-dark" href="home.html" role="button">Login With Google</a></div>-->

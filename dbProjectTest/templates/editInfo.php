@@ -4,8 +4,8 @@
         <meta charset="UTF-8">  
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="author" content="define author of the page -- Sneha Iyer, McKayla Thomas">
-        <meta name="description" content="Sprint 3 Edit Info Page">  
+        <meta name="author" content="define author of the page">
+        <meta name="description" content="Edit Info Page">  
 
         <title>FavoriteFoodies</title>
 
