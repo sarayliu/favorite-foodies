@@ -32,7 +32,6 @@
                 // $statement->debugDumpParams();
                 // $result = $statement->fetchAll();
                 echo "<h1>Your event has been stored in the database successfully!</h1>";
-                echo "<h2><a href = 'https://www.cs.virginia.edu/~syl5fr/favorite-foodies/dbProjectTest/?command=allEvents'>Go see your event in the All Events page here</a></h2>";
                 // $successful = true;
             } catch(Exception $e) {
                 $errorStatement = $e->getMessage();
@@ -47,10 +46,30 @@
                 else {
                     echo "Error: " . $errorStatement;
                 }
-                echo "<h2><a href = 'https://www.cs.virginia.edu/~syl5fr/favorite-foodies/dbProjectTest/?command=createEvents'>Go back to the Create Events page here</a></h2>";
                 // echo "Error: " . $e;
                 // echo "Error creating event";
                 // echo $e->getMessage();
+            }
+
+            $query = "INSERT INTO location VALUES (:c, :d)";
+            $statement = $db->prepare($query);
+            try {
+                $statement->bindValue(':c', $venue);
+                $statement->bindValue(':d', $city);
+                $statement->execute();
+                // $statement->debugDumpParams();
+                // $result = $statement->fetchAll();
+                echo "<h1>The location of your venue has also been stored in the database successfully!</h1>";
+                echo "<h2><a href = 'https://www.cs.virginia.edu/~syl5fr/favorite-foodies/dbProjectTest/?command=allEvents'>Go see your event in the All Events page here</a></h2>";
+            } catch(Exception $e) { // location already exists
+                $errorStatement = $e->getMessage();
+                if(strpos($errorStatement, 'Duplicate entry') !== false) {
+                    echo "This venue is already stored in the database and that's okay! You chose a popular place!";
+                }
+                else {
+                    echo "Error: " . $errorStatement;
+                }
+                echo "<h2><a href = 'https://www.cs.virginia.edu/~syl5fr/favorite-foodies/dbProjectTest/?command=createEvents'>Go back to the Create Events page here</a></h2>";
             }
 		?>
 	</center>
