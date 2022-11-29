@@ -172,7 +172,9 @@ $('#rsvpButton').on('click', function() {
             // }
             // console.log(result); // Array
             // console.log($(this)); // this is no longer the same this in data
-            alert("RSVP successful");
+            // document.getElementById("rsvpButton").disabled = true;
+            // $("#rsvpButton").attr("disabled", true);
+            alert("RSVP successful! Refresh the page to see updated disabled button");
         },
         error: function(result) {
             alert("error with RSVP");
