@@ -10,7 +10,7 @@
         <title>FavoriteFoodies</title>
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous"> 
-        <link rel="stylesheet" href="styles/main.css">
+        <!-- <link rel="stylesheet" href="styles/main.css"> -->
 
     </head>
     <body>
@@ -77,14 +77,16 @@
                 <div class="col-xs-8 mx-auto">
               
                 <form name="form3" id="form3" action="?command=homePage" method="post">
+                    <div class="form-group">
                     <p>
                         <label for="username">Edit Username</label>
                         <input type="text" name="username" id="username">
                     </p>
+                    </div>
                               
                     <p>&nbsp;</p>
                     <p>
-                        <input type="submit" name="Submit" id="Submit" value="Submit">
+                        <input type="submit" class="btn btn-primary" name="Submit" id="Submit" value="Submit">
                     </p>
                 </form>
                 </div>
