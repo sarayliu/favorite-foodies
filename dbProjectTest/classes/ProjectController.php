@@ -207,7 +207,7 @@ class ProjectController {
     private function seeReviews() 
     {
         $transac = $this->loadNewReview();
-        echo "after load new review in see reviews\n";
+        // echo "after load new review in see reviews\n";
         $email = $_SESSION["email"];
         $username = $_SESSION["username"];
 
@@ -230,12 +230,17 @@ class ProjectController {
 
     private function loadNewReview() {
        // get the post records
-       if (isset($_POST["url"]) and isset($_POST["comment"])) 
+       if (isset($_POST["url"]) and isset($_POST["comment"]) and isset($_POST["foodname"]) ) 
        {
             echo "url and comment are set\n";
-            $url = $_POST['url'];
+            $id = $_POST['url'];
             $comment = $_POST['comment'];
+            $fname = strtolower($_POST['foodname']); 
             $username = $_SESSION["username"];
+
+            //recontruct url using id and foodname
+            $fname = str_replace(" ", "-", $fname);
+            $url = 'https://spoonacular.com/recipes/'.$fname.'-'.$id;
 
             // database insert SQL code
             // $sql = "insert into `review` (`username`, `url`, `comment`) values (?, ?, ?);";

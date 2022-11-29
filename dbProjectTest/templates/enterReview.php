@@ -80,8 +80,10 @@
                
                 <!-- form to create new review -->
                 <form name="form2" id="form2" action="?command=seeReviews" method="post"> <!-- onsubmit="return(checkForm())"> -->
-                    <label for="url">Url of Food/Dish </label>
+                    <label for="url">Food ID </label>
                     <input type="text" name="url" id="url">
+                    <label for="foodname">Food Name</label>
+                    <input type="text" name="foodname" id="foodname">
                     <p>
                         <label for="comment">Comment</label>
                         <!--<input type="text" name="comment" id="comment"> -->
@@ -137,7 +139,7 @@
 
         </script>
 
-        <script src="script.js" defer></script>
+        <!-- <script src="script.js" defer></script> -->
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
     </body>
