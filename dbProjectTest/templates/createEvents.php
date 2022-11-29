@@ -64,16 +64,39 @@
     <div class="media justify-content-center">
         <div class="media-body text-center">
             <h2 class="m-4">Create an Event!</h2>
+            <h4 class="m-4">All fields are required except for the description.</h4>
         </div>
     </div>
 
-    <?php
-        $db = include("connect-db-for-templates.php");
-        // echo "connected database<br></br>";
-        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        session_start();
-        // echo "session started<br></br>";
-    ?>
+    <center>
+         <form action="templates/insertEvent.php" method="post">
+            <p>
+               <label for="title">Title*:</label>
+               <input type="text" name="title" id="title" maxlength="100" required>
+            </p>
+    
+            <p>
+               <label for="date">Date*:</label>
+               <input type="date" name="date" id="date" required>
+            </p>
+             
+            <p>
+               <label for="venue">Venue*:</label>
+               <input type="text" name="venue" id="venue" maxlength="100" required>
+            </p>
+
+            <p>
+               <label for="city">City*:</label>
+               <input type="text" name="city" id="city" maxlength="40" required>
+            </p>
+ 
+            <p>
+               <label for="Description">Description (optional):</label>
+               <input type="text" name="description" id="description">
+            </p>
+            <input type="submit" value="Submit Event"></br>
+         </form>
+      </center>
 
     <center>
         <footer class="primaryFooter containerClass">
