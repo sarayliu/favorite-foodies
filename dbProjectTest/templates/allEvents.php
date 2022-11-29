@@ -64,6 +64,8 @@
         </div>
     </div>
 
+    <!-- <button id="rsvpButton" class="btn bg-success btn-sm mb-3 mt-2 w-big" style="background-color:green; border-color:blue">Yes, I want to go!</button> -->
+
     <?php
         // echo '<table border="0" cellspacing="2" cellpadding="2"> 
         //         <tr> 
@@ -172,7 +174,7 @@
                     <td>$venue</td>
                     <td>$description</td>
                     <td>
-                        <input type=\"button\" value=\"Yes, I want to go!\" disabled class=\"btn bg-light btn-sm mb-3 mt-2 w-big\" style=\"border-color:blue\"/>
+                        <input type=\"submit\" value=\"Yes, I want to go!\" disabled class=\"btn bg-light btn-sm mb-3 mt-2 w-big\" style=\"border-color:blue\"/>
                     </td>
                 </tr>";
             }
@@ -183,7 +185,7 @@
                     <td>$venue</td>
                     <td>$description</td>
                     <td>
-                        <input type=\"button\" value=\"Yes, I want to go!\" class=\"btn btn-sm mb-3 mt-2 w-big\" style=\"background-color:green; border-color:blue\"/>
+                        <button id=\"rsvpButton\" name=\"$title\" class=\"btn bg-success btn-sm mb-3 mt-2 w-big\" style=\"background-color:green; border-color:blue\">Yes, I want to go!</button>
                     </td>
                 </tr>";
             }

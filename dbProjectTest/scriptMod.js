@@ -47,7 +47,8 @@ function displayRecipeInfo(recipe_info) {
 }
 
 $('#searchButton').on('click', function() {
-
+    // alert("in searchButton scriptMod.js");
+    // console.log("in searchButton scriptMod.js");
     $.ajax({
         type: 'GET',
         url: API_SEARCH_URL + $search.val(),
@@ -77,6 +78,7 @@ $('#searchButton').on('click', function() {
                         recipe.rating = parseInt(rating);
                         recipe.fillcolor = fillcolor;
                         addRecipe(recipe);
+                        // alert('See results below');
                     },
                     error: function() {
                         alert('An error occurred while retrieving recipes.');
@@ -167,4 +169,24 @@ $('#content').delegate('.favorite', 'click', function() {
 $myModal.delegate('.close-modal', 'click', function() {
     console.log("Closing modal");
     $('#myModal').modal('hide');
+});
+
+$('#rsvpButton').on('click', function() {
+    // e.preventDefault();
+    console.log("in rsvpButton scriptMod.js");
+    $.ajax({
+        type: 'POST',
+        url: 'classes/JsToDb.php',
+        data: {
+            functionname: 'addRSVP', 
+            title: $(this).attr('name'),
+        },
+        success: function(result) {
+            console.log(result);
+            alert("RSVPed to " + title);
+        },
+        error: function(result) {
+            alert("error with RSVP");
+        }
+    });
 });
