@@ -108,4 +108,14 @@
             $result = $statement->fetchAll();
         }
     }
+    if($funcName == "addRSVP") {
+        echo "in addRSVP function";
+        $query = "INSERT INTO rsvp VALUES (:a, :b);";
+        $statement =  $db->prepare($query);
+        $statement->bindValue(':a', $_SESSION["username"]);
+        $statement->bindValue(':b', $_POST['title']);
+        $statement->execute();
+        $result = $statement->fetchAll();
+        echo $result;
+    }
 ?>
