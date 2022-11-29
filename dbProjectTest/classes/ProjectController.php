@@ -40,6 +40,9 @@ class ProjectController {
             case "enterReview":
                 $this->enterReview();
                 break;
+            case "insertReview":
+                $this->insertReview();
+                break;
             case "seeReviews":
                 $this->seeReviews();
                 break;

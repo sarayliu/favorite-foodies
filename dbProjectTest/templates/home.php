@@ -214,6 +214,17 @@
                 <button type="button" class="btn-close close-modal"></button>
               </div>
 
+              <ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" data-bs-toggle="tab" href="#modalBodyOne">Info</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-bs-toggle="tab" href="#modalBodyTwo">Review</a>
+  </li>
+</ul>
+
+<div class="tab-content">
+  <div class="tab-pane container active" id="modalBodyOne">
               <div class="modal-body">
                 <h3 class="text-center modal-title">{{title}}</h3>
               <div class="small d-flex justify-content-center mt-4">
@@ -285,6 +296,24 @@
               <p>{{{instructions}}}</p>
               {{/analyzedInstructions}}
               </div>
+</div> <!-- End of first pane -->
+<div class="tab-pane container fade" id="modalBodyTwo">
+              <div class="modal-body">
+                <h3 class="text-center modal-title">Create Review</h3>
+
+                <form action="?command=seeReviews" method="POST">
+                <input type="hidden" id="url" name="url" value="{{spoonacularSourceUrl}}">
+  <div class="mb-3 mt-3">
+    <label for="comment" class="form-label">Review:</label>
+    <input type="text" class="form-control" id="comment" placeholder="Enter review" name="comment">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+</div>
+</div>
+
+</div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-danger close-modal">Close</button>
               </div>
