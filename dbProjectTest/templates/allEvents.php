@@ -64,15 +64,6 @@
         </div>
     </div>
 
-    <table border="0" cellspacing="2" cellpadding="2"> 
-        <tr> 
-            <td> <font face="Arial">Title</font> </td> 
-            <td> <font face="Arial">Date</font> </td> 
-            <td> <font face="Arial">Venue</font> </td> 
-            <td> <font face="Arial">Description</font> </td> 
-            <td> <font face="Arial">RSVP</font> </td>
-        </tr>
-
     <?php
         // echo '<table border="0" cellspacing="2" cellpadding="2"> 
         //         <tr> 
@@ -108,6 +99,14 @@
         $resultEvents = $statement->fetchAll();
         // echo $result;
         echo "<div id=\"content-wrap\">";
+        echo "<table border=\"0\" cellspacing=\"2\" cellpadding=\"2\"> 
+                <tr> 
+                    <td> <font face=\"Arial\">Title</font> </td> 
+                    <td> <font face=\"Arial\">Date</font> </td> 
+                    <td> <font face=\"Arial\">Venue</font> </td> 
+                    <td> <font face=\"Arial\">Description</font> </td> 
+                    <td> <font face=\"Arial\">RSVP</font> </td>
+                </tr>";
 
         // $queryRSVP = "SELECT * from rsvp WHERE username='" . $user["username"] . "';";
         // echo $queryRSVP . "</br>";
