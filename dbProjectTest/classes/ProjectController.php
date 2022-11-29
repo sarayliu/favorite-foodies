@@ -55,6 +55,9 @@ class ProjectController {
             case "myEvents":
                 $this->myEvents();
                 break;
+            case "createEvents":
+                $this->createEvents();
+                break;
             case "logout":
                 $this->destroyCookies();
             case "login":
@@ -319,5 +322,9 @@ class ProjectController {
             "username" => $_SESSION["username"],
         ];
         include("templates/myEvents.php");
+    }
+
+    private function createEvents() {
+        include("templates/createEvents.php");
     }
 }

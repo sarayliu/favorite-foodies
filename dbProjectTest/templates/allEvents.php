@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"> 
 
     <meta name="author" content="Sara Liu">
-    <meta name="description" content="home page for app, CS4750 at UVA">
+    <meta name="description" content="All Events page">
     <meta name="keywords" content="food events">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -49,6 +49,9 @@
               </li>
               <li class="nav-item">
                   <a class="nav-link btn btn-default text-light" href="?command=myEvents">My Events</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link btn btn-default text-light" href="?command=createEvents">Create Events</a>
               </li>
               <li class="nav-item">
                   <a class="nav-link btn btn-danger text-light" href="?command=logout">Logout</a>
