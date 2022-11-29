@@ -214,7 +214,7 @@
               </svg>
                   </div>
                   <div class="col-6">
-                    <p class="text-muted card-title">Rating: {{rating}}</p>
+                    <p class="text-muted card-title">Upvotes: {{rating}}</p>
                   </div>
               </div>
         </div>
