@@ -60,6 +60,9 @@
                     <a class="nav-link btn btn-default text-light" href="?command=myEvents">My Events</a>
                 </li>
                 <li class="nav-item">
+                  <a class="nav-link btn btn-default text-light" href="?command=createEvents">Create Events</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link btn btn-danger text-light" href="?command=logout">Logout</a>
                 </li>
             </ul>

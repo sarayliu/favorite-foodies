@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"> 
 
     <meta name="author" content="Sara Liu">
-    <meta name="description" content="My Events page">
-    <meta name="keywords" content="my food events rsvp">
+    <meta name="description" content="Create Events page">
+    <meta name="keywords" content="create food events">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
       
-    <title>My Events</title>
+    <title>Create Events</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" 
       integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous"> 
@@ -63,8 +63,7 @@
     <div class="container">
     <div class="media justify-content-center">
         <div class="media-body text-center">
-            <h2 class="m-4">My Events</h2>
-            <h3 class="m-4">The events I have been to/going to:</h3>
+            <h2 class="m-4">Create an Event!</h2>
         </div>
     </div>
 
@@ -74,26 +73,6 @@
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         session_start();
         // echo "session started<br></br>";
-        $query = "SELECT * from rsvp WHERE username='" . $user["username"] . "';";
-        // echo "query written: " . $query . "<br></br>";
-        $statement =  $db->prepare($query);
-        // echo $db->error;
-        // echo "statement prepared<br></br>";
-        $statement->execute();
-        // echo "statement executed</br>";
-        // $statement->debugDumpParams();
-        $result = $statement->fetchAll();
-        // echo $result;
-        if(empty($result[0])) {
-            echo "<b><h4 style='color:green'>You are not going to any events. RSVP on the All Events tab!</h4></b><br/>";
-        }
-        else {
-            foreach($result as $row) {
-                echo "<h5 style=\"text-align:center; color:green\">$row[1]</h5><br/>";
-            }
-        }
-        // echo "done displaying results";
-        // $result->free();
     ?>
 
     <center>
