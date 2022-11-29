@@ -5,8 +5,8 @@ console.log(process.env.SPOONACULAR_API_KEY); */}
 // import { spoonacular_api_key } from "./env-variables.js";
 // const spoonacular_api_key = require(env-variables.js);
 // console.log(spoonacular_api_key);
-const API_KEY = '8d0f052ccdc04aa4afeffc5de901358e';//spoonacular_api_key;
-const NUM_RESULTS = 8;
+const API_KEY = ''; // Insert your API key here
+const NUM_RESULTS = 1;
 const API_BASE_URL = 'https://api.spoonacular.com/recipes/'
 const API_SEARCH_URL = API_BASE_URL + 'complexSearch?apiKey=' + API_KEY + '&number=' + NUM_RESULTS + '&query=';
 
@@ -18,14 +18,32 @@ var recipeCardTemplate = $('#recipeCardTemplate').html();
 var recipeInfoTemplate = $('#recipeInfoTemplate').html();
 
 function addRecipe(recipe) {
+    $recipes.empty();
     $recipes.append(Mustache.render(recipeCardTemplate, recipe));
 }
 
+function parseInstructions(recipe_info) {
+  var instructions = recipe_info['instructions'];
+  if (!instructions) {
+      var source = recipe_info['creditsText'];
+      if (!source) {
+          instructions = "Sorry, this recipe's instructions are unavailable.";
+      } else {
+          console.log("In the else block in parseInstructions");
+          var sourceUrl = recipe_info['sourceUrl'];
+          var hrefElem = "<a href=\"" + sourceUrl + "\" target=\"_blank\">" + source + "</a>.";
+          instructions = 'Read the detailed instructions on ' + hrefElem;
+      }
+  }
+  return instructions;
+}
+
 function displayRecipeInfo(recipe_info) {
-    console.log("In displayRecipeInfo()");
-    $myModal.empty();
-    $myModal.append(Mustache.render(recipeInfoTemplate, recipe_info));
-    console.log("Finished rendering");
+  console.log("in the displayRecipeInfo() function");
+  recipe_info.instructions = parseInstructions(recipe_info);
+  console.log(recipe_info.instructions);
+  $myModal.empty();
+  $myModal.append(Mustache.render(recipeInfoTemplate, recipe_info));
 }
 
 $('#searchButton').on('click', function() {

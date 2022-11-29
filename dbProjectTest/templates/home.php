@@ -188,7 +188,7 @@
             />
             <div class="card-body text-center">
               <h5 class="card-title">{{title}}</h5>
-              <p class="text-muted card-title">Rating: {{rating}}</p>
+              <p class="card-title">ID: {{id}}</p>
               <hr class="bg-light"/>
               <button
                 data-id="{{id}}"
@@ -196,8 +196,9 @@
               >
                 View Recipe
             </button>
-            </div class="d-flex flex-row">
-            <div>
+</div>
+            <div class="card-footer row align-items-start">
+            <div class="col-2">
               <svg xmlns="http://www.w3.org/2000/svg"
                   data-id="favorite_{{id}}"
                   type="button" 
@@ -212,13 +213,17 @@
                   />
               </svg>
                   </div>
-          </div>
-      </div>
+                  <div class="col-6">
+                    <p class="text-muted card-title">Rating: {{rating}}</p>
+                  </div>
+              </div>
+        </div>
+</div>
       </template>
   </div>
 
-        <!-- This is where the modal code goes (might need to use templates here too) -->
-        <div class="modal hide" id="myModal">
+                <!-- This is where the modal code goes (might need to use templates here too) -->
+                <div class="modal hide" id="myModal">
           <div class="modal-dialog modal-lg">
             <div class="modal-content" id="innerModalContent">
               <template id='recipeInfoTemplate'>
@@ -226,6 +231,17 @@
                 <button type="button" class="btn-close close-modal"></button>
               </div>
 
+              <!-- <ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" data-bs-toggle="tab" href="#modalBodyOne">Info</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-bs-toggle="tab" href="#modalBodyTwo">Review</a>
+  </li>
+</ul>
+
+<div class="tab-content">
+  <div class="tab-pane container active" id="modalBodyOne"> -->
               <div class="modal-body">
                 <h3 class="text-center modal-title">{{title}}</h3>
               <div class="small d-flex justify-content-center mt-4">
@@ -274,6 +290,47 @@
               </div>
               </div>
 
+              <hr />
+              <h4>Summary</h4>
+              <p>{{{summary}}}</p>
+              <hr />
+              <h4>Ingredients</h4>
+                <ul>
+                  {{#extendedIngredients}}
+                    <li class="my-1">{{original}}</li>
+                  {{/extendedIngredients}}
+                </ul>
+                <hr />
+              <h4>Instructions</h4>
+              <ol>
+                {{#analyzedInstructions}}
+                {{#steps}}
+                <li class="my-1">{{step}}</li>
+                {{/steps}}
+                {{/analyzedInstructions}}
+              </ol> 
+              {{^analyzedInstructions}}
+              <p>{{{instructions}}}</p>
+              {{/analyzedInstructions}}
+              </div>
+<!-- </div>  --><!-- End of first pane -->
+<!-- <div class="tab-pane container fade" id="modalBodyTwo">
+              <div class="modal-body">
+                <h3 class="text-center modal-title">Create Review</h3>
+
+                <form action="?command=seeReviews" method="POST">
+                <input type="hidden" id="url" name="url" value="{{spoonacularSourceUrl}}">
+  <div class="mb-3 mt-3">
+    <label for="comment" class="form-label">Review:</label>
+    <input type="text" class="form-control" id="comment" placeholder="Enter review" name="comment">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+</div> 
+</div>
+
+</div> -->
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-danger close-modal">Close</button>
