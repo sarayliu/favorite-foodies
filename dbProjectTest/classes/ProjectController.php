@@ -75,24 +75,24 @@ class ProjectController {
             $email = $_POST["email"];
             $thing = $this->validateEmail($email);
             if($thing == true){
-                echo "email is valid<br>";
+                // echo "email is valid<br>";
                 $hasher = new PasswordHash(8, false);
 
                 // $data = $this->db->query("select * from users where email = ?;", $_POST["email"]);
                 try{
                     $query = "SELECT * FROM users WHERE email = :email";
-                    echo "after query string<br>";
+                    // echo "after query string<br>";
                     // echo $this->db;
-                    echo "after printing db<br>";
+                    // echo "after printing db<br>";
                     $statement =  $this->db->prepare($query);
-                    echo "after prepare<br>";
+                    // echo "after prepare<br>";
                     $statement->bindValue(':email', $email);
-                    echo "after bind value<br>";
+                    // echo "after bind value<br>";
                     $statement->execute();
-                    echo "after exec<br>";
+                    // echo "after exec<br>";
                     $result = $statement->fetchAll();
                     $data = $result;
-                    echo "after data = result<br>";
+                    // echo "after data = result<br>";
                     echo "$data";
                 }
                 catch (PDOExcption $e){
@@ -100,22 +100,22 @@ class ProjectController {
                     // if (primary)
                     //     echo "general message";
                     if($statement->rowCount() == 0)
-                        echo "Failed to add a friend <br/>";
+                        echo "Failed to execute query <br/>";
                 }
                 catch (Exception $e){
                     echo "in catch exception  " . $e->getMessage();
                 }
-                echo "after query in controller<br>";
+                // echo "after query in controller<br>";
                 if ($data === false) 
                 {
-                    echo "data === false<br>";
+                    // echo "data === false<br>";
                     $error_msg = "Error checking for user";
                 } 
                 else if (!empty($data)) 
                 {
-                    echo "!empty(data)";
+                    // echo "!empty(data)";
                     if ($hasher->CheckPassword($_POST['password'], $hasher->HashPassword($_POST['password']))) {
-                        echo "Inside password verification statement<br>";
+                        // echo "Inside password verification statement<br>";
                         $_SESSION["username"] = $data[0]["username"]; 
                         setcookie("username", $data[0]["username"], time() + 3600);
                         $_SESSION["email"] = $data[0]["email"];
@@ -129,22 +129,22 @@ class ProjectController {
                     // TODO: input validation
                     //       PHP provides password_hash() and password_verify()
                     //       to provide password verification
-                    echo "no user found, so insert<br>";
+                    // echo "no user found, so insert<br>";
                     // $db = new Database($host, $uname, $pass, $dbname);
                     $query = "INSERT INTO users VALUES (:a, :b, :c)";
                     $statement =  $this->db->prepare($query);
-                    echo "after insert query<br>";
+                    // echo "after insert query<br>";
                     $statement->bindValue(':a', $_POST["username"]);
-                    echo "after bind a (username) <br>";
+                    // echo "after bind a (username) <br>";
 
                     $statement->bindValue(':b', $hasher->HashPassword($_POST['password']));
-                    echo "after bind b<br>";
+                    // echo "after bind b<br>";
                     $statement->bindValue(':c', $_POST["email"]);
                     $statement->execute();
-                    echo "after insert execute<br>";
+                    // echo "after insert execute<br>";
                     $result = $statement->fetchAll();
                     $insert = $result;
-                    echo "after insert";
+                    // echo "after insert";
                     // $insert = $this->db->query("insert into users (username, email, password) values (?, ?, ?);", $_POST["username"], $_POST["email"], password_hash($_POST["password"], PASSWORD_DEFAULT)); //use hashing for dataase security
                     if ($insert === false) {
                         $error_msg = "Error inserting user";
@@ -193,26 +193,33 @@ class ProjectController {
         include("templates/home.php");
     }
 
-    private function getJSONReview(){
-        global $db;
-        //Query that returns JSON instead of HTML
-        $username = $_SESSION["username"];
-        $msg4 = $this->db->query("select username, comment from review where username = ?;", $username);
+    // private function getJSONReview(){
+    //     global $db;
+    //     //Query that returns JSON instead of HTML
+    //     $username = $_SESSION["username"];
+    //     $msg4 = $this->db->query("select username, comment from review where username = ?;", $username);
 
-        // Return JSON only
-        header("Content-type: application/json");
-        echo json_encode($msg4, JSON_PRETTY_PRINT);
-    }
+    //     // Return JSON only
+    //     header("Content-type: application/json");
+    //     echo json_encode($msg4, JSON_PRETTY_PRINT);
+    // }
 
     private function seeReviews() 
     {
         $transac = $this->loadNewReview();
-
+        echo "after load new review in see reviews\n";
         $email = $_SESSION["email"];
         $username = $_SESSION["username"];
 
-        $msg = $this->db->query("select * from review where username = ?;", $username);
-        
+        // $msg = $this->db->query("select * from review where username = ?;", $username);
+        $query = "SELECT * FROM review WHERE username = :uname ORDER BY url";
+        $statement =  $this->db->prepare($query);
+        $statement->bindValue(':uname', $username);
+        $statement->execute();
+        $result = $statement->fetchAll();
+        $msg = $result;
+        // echo "after query in see reviews\n";
+        // var_dump($msg);
         $user = [
             "username" => $_SESSION["username"],
             "email" => $_SESSION["email"],
@@ -225,20 +232,28 @@ class ProjectController {
        // get the post records
        if (isset($_POST["url"]) and isset($_POST["comment"])) 
        {
+            echo "url and comment are set\n";
             $url = $_POST['url'];
             $comment = $_POST['comment'];
-
             $username = $_SESSION["username"];
 
             // database insert SQL code
-            $sql = "insert into `review` (`username`, `url`, `comment`) values (?, ?, ?);";
+            // $sql = "insert into `review` (`username`, `url`, `comment`) values (?, ?, ?);";
 
             // insert in database 
-            $rs = $this->db->query($sql, $username, $url, $comment);
+            // $rs = $this->db->query($sql, $username, $url, $comment);
+            $query = "INSERT INTO review VALUES (:a, :b, :c)";
+            $statement =  $this->db->prepare($query);
+            $statement->bindValue(':a', $username);
+            $statement->bindValue(':b', $url);
+            $statement->bindValue(':c', $comment);
+            $statement->execute();
+            $result = $statement->fetchAll();
+            $rs = $result;
 
             if($rs)
             {
-                //echo "New Review Had Been Inserted Into Database \n";
+                echo "New Review Had Been Inserted Into Database \n";
                 return $rs;
             }
         }
@@ -253,7 +268,14 @@ class ProjectController {
             setcookie("username", $_POST["username"], time() + 3600);
             $_SESSION["username"] = $_POST["username"];
             
-            $rs = $this->db->query("update users set username = ? where email = ?", $username, $email);
+            // $rs = $this->db->query("update users set username = ? where email = ?", $username, $email);
+            $query = "UPDATE user SET username = :a WHERE email = :b";
+            $statement =  $this->db->prepare($query);
+            $statement->bindValue(':a', $_SESSION["username"]);
+            $statement->bindValue(':b', $_SESSION["email"]);
+            $statement->execute();
+            $result = $statement->fetchAll();
+            $rs = $result;
             if($rs)
             {
                 //echo "User Information Has Been Updated In Database \n";

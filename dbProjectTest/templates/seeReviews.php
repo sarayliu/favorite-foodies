@@ -24,55 +24,57 @@
     </head>
     <body>
         <!-- Navbar -->
-        <nav class="navbar navbar-expand-sm navbar-custom border-bottom-0">
-            <a class="navbar-brand mb-0 h1" href="home.html" aria-label="home"></a>
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ11PiZaa5CEa4xTC3yYqCWR_GNtVArU7_ruh5sViBUb6y5p8unqM_rtwQjyP1FizulePg&usqp=CAU" 
-            style="width:3%" alt="nav img">
-            <nav class="navbar navbar-dark navbar-custom border-bottom-0">
-                <a class="navbar-brand mb-0 h1" href="home.html" aria-label="home"></a>
-                <a class="navbar-brand mb-0 h1" href="home.html" aria-label="home" style="color: black;">FavoriteFoodies</a> 
-            </nav>
-            <div class="navbar-collapse">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <!-- <a class="nav-link text-dark" href="home.html"> Home </a> --> 
-                        <a class="nav-link text-dark btn btn-default" href="?command=homePage">Home</a>
-
-                    </li>
-                   
-                    <li class="nav-item">
-                        <!-- <a class="nav-link text-dark" href="seeReviews.php"> See Reviews </a> -->
-                        <a class="nav-link text-dark btn btn-default" href="?command=seeReviews">See Reviews</a>
-
-                    </li>
-                    <li class="nav-item">
-                        <!-- <a class="nav-link text-dark" href="editInfo.html"> Edit Information </a> -->
-                        <a class="nav-link text-dark btn btn-default" href="?command=editInfo">Edit/Update User Info</a>
-
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn btn-default text-light" href="?command=allEvents">All Events</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn btn-default text-light" href="?command=myEvents">My Events</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark btn btn-danger" href="?command=logout">Logout</a>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Searchbar -->
-            <form id="form">
-                <input
-                    type="text"
-                    id="search"
-                    placeholder="Searchbar"
-                    class="search"
-                />
-            </form>
+        <nav class="navbar navbar-expand-sm navbar-custom border-bottom-0 bg-dark text-light">
+        <a class="navbar-brand mb-0 h1" href="home.html" aria-label="home"></a>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ11PiZaa5CEa4xTC3yYqCWR_GNtVArU7_ruh5sViBUb6y5p8unqM_rtwQjyP1FizulePg&usqp=CAU" 
+        style="width:3%" alt="nav img">
+        <nav class="navbar navbar-dark navbar-custom border-bottom-0">
+            <a class="navbar-brand mb-0 h1" href="?command=homePage" aria-label="home"></a>
+            <a class="navbar-brand mb-0 h1" href="?command=homePage" aria-label="home">FavoriteFoodies</a> 
         </nav>
+        <div class="navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <!-- <a class="nav-link text-dark" href="home.html"> Home </a> --> 
+                    <a class="nav-link btn btn-default text-light" href="?command=homePage">Home</a>
 
+                </li>
+                
+                <li class="nav-item">
+                    <!-- <a class="nav-link text-dark" href="seeReviews.php"> See Reviews </a> -->
+                    <a class="nav-link btn btn-default text-light" href="?command=seeReviews">See Reviews</a>
+                </li>
+                <li class="nav-item">
+                    <!-- <a class="nav-link text-dark" href="seeReviews.php"> See Reviews </a> -->
+                    <a class="nav-link btn btn-default text-light" href="?command=enterReview">Enter a Reviews</a>
+                </li>
+                <li class="nav-item">
+                    <!-- <a class="nav-link text-dark" href="editInfo.html"> Edit Information </a> -->
+                    <a class="nav-link btn btn-default text-light" href="?command=editInfo">Edit/Update User Info</a>
+
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-default text-light" href="?command=allEvents">All Events</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-default text-light" href="?command=myEvents">My Events</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-danger text-light" href="?command=logout">Logout</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="d-flex flex-start mx-4">
+        <input
+                type="text"
+                id="search"
+                placeholder="Searchbar"
+                class="search mx-2 form-control"
+            />
+        <button id="searchButton" class="btn bg-success text-light">Search</button>
+        </div>
+        </nav>
 
         <div class="container" style="margin-top: 15px;">
             <div class="row col-xs-8">
@@ -86,18 +88,18 @@
 
         <div id="OverallDiv">
 
-            <div class="container">
+            <!-- <div class="container">
                 <div class="row">
                     <h4>Favorite Food: </h4>
-                    <p id="jsonObj_text"></p> <!--get favorite food json object and put here--> 
+                    <p id="jsonObj_text"></p> get favorite food json object and put here 
                 </div>
-            </div>
+            </div> -->
             
             <div class="container">
                 <div class="row">
                     <div class="col-sm-5">
                     
-                        <?php echo $deleteMsg??''; ?>
+                        <?php echo $deleteMsg; ?>
                         <div class="table-responsive">
                             <table class="table table-bordered">
                                 <thead><tr><th>Reviews (Most Recent at Top)</th>
@@ -107,31 +109,31 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                        if(is_array($msg))
-                                        {      
+                                        // if($msg->rowCount > 1)
+                                        // {      
                                             $sn=1;
                                             foreach($msg as $data)
                                             {
                                     ?>
                                                 <tr>
                                                 <td><?php echo $sn; ?></td>
-                                                <td><?php echo $data['url']??''; ?></td>
-                                                <td><?php echo $data['comment']??''; ?></td>
+                                                <td><?php echo $data['url']; ?></td>
+                                                <td><?php echo $data['comment']; ?></td>
                                                 </tr>
                                     <?php
                                                 $sn++;
                                             }
-                                        }
-                                        else{ 
+                                        // }
+                                        // else{ 
                                     ?>
-                                            <tr>
+                                            <!-- <tr>
                                                 <td colspan="8">
                                                     <?php echo $msg; ?>
                                                 </td>
-                                            <tr>
-                                    <?php
-                                        }
-                                    ?>
+                                            <tr> -->
+                                    <!-- <?php
+                                        // }
+                                    ?> -->
                                 </tbody>
                             </table>
                         </div>
@@ -154,57 +156,57 @@
                 element.classList.toggle("dark-mode");
             }
             
-            //AJAX
-            var jsonObj = null;
-            var score = 0;
-            // const myObject = null;
+            // //AJAX
+            // var jsonObj = null;
+            // var score = 0;
+            // // const myObject = null;
 
-            function getJSON() 
-            {
-                // instantiate the object
-                var ajax = new XMLHttpRequest();
-                // open the request
-                ajax.open("GET", "?command=get_jsonObj", true);
-                // ask for a specific response
-                ajax.responseType = "json";
-                // send the request
-                ajax.send(null);
+            // function getJSON() 
+            // {
+            //     // instantiate the object
+            //     var ajax = new XMLHttpRequest();
+            //     // open the request
+            //     ajax.open("GET", "?command=get_jsonObj", true);
+            //     // ask for a specific response
+            //     ajax.responseType = "json";
+            //     // send the request
+            //     ajax.send(null);
             
-                // What happens if the load succeeds
-                ajax.addEventListener("load", function() {
-                    // set question
-                    if (this.status == 200) { // worked 
+            //     // What happens if the load succeeds
+            //     ajax.addEventListener("load", function() {
+            //         // set question
+            //         if (this.status == 200) { // worked 
 
-                        //Define, instantiate, and use at least one JavaScript object
-                        //reading the JSON query
-                        jsonObj = this.response;
-                        const myObject = { title: jsonObj[0].title, rating: jsonObj[0].rating};
+            //             //Define, instantiate, and use at least one JavaScript object
+            //             //reading the JSON query
+            //             jsonObj = this.response;
+            //             const myObject = { title: jsonObj[0].title, rating: jsonObj[0].rating};
 
-                        // console.log("ajax worked!")
-                        // console.log("object: ", myObject.title)
-                        document.getElementById("jsonObj_text").innerHTML = myObject.title;
+            //             // console.log("ajax worked!")
+            //             // console.log("object: ", myObject.title)
+            //             document.getElementById("jsonObj_text").innerHTML = myObject.title;
 
-                        // displayJSONObj();
-                    }
-                });
+            //             // displayJSONObj();
+            //         }
+            //     });
             
-                // What happens on error
-                ajax.addEventListener("error", function() {
-                    document.getElementById("message").innerHTML = 
-                        "<div class='alert alert-danger'>An Error Occurred</div>";
-                });
-            }
-            // Method to display a question
-            // function displayJSONObj() {
-            //     // Why innerHTML and not textContent?
-            //     document.getElementById("jsonObj_text").innerHTML = myObject.title;
+            //     // What happens on error
+            //     ajax.addEventListener("error", function() {
+            //         document.getElementById("message").innerHTML = 
+            //             "<div class='alert alert-danger'>An Error Occurred</div>";
+            //     });
             // }
+            // // Method to display a question
+            // // function displayJSONObj() {
+            // //     // Why innerHTML and not textContent?
+            // //     document.getElementById("jsonObj_text").innerHTML = myObject.title;
+            // // }
 
-            // Need to add the initial question load
-            getJSON();
+            // // Need to add the initial question load
+            // getJSON();
 
         </script>
-        <script src="script.js" defer></script>
+        <!-- <script src="script.js" defer></script> -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
     </body>
 </html>

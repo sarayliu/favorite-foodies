@@ -39,6 +39,9 @@
                   <a class="nav-link btn btn-default text-light" href="?command=seeReviews">See Reviews</a>
               </li>
               <li class="nav-item">
+                    <a class="nav-link btn btn-default text-light" href="?command=enterReview">Enter a Reviews</a>
+              </li>
+              <li class="nav-item">
                   <a class="nav-link btn btn-default text-light" href="?command=editInfo">Edit/Update User Info</a>
               </li>
               <li class="nav-item">
