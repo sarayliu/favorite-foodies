@@ -91,20 +91,65 @@
         // echo "session started<br></br>";
         // $query = "CREATE PROCEDURE SelectAllEvents AS SELECT * FROM event GO; EXEC SelectAllEvents; CALL SelectAllEvents();";
         // $query = "SELECT * from event;";
+        // $queryEvents = "CALL SelectAllEvents();";
+        // $queryRSVP = "SELECT * from rsvp WHERE username='" . $user["username"] . "';";
+        // $query = $queryEvents . " " . $queryRSVP;
         $query = "CALL SelectAllEvents();";
+        // echo $query . "</br>";
         // echo "query written<br></br>";
         // echo $db;
         // echo "db echoed<br></br>";
         $statement =  $db->prepare($query);
-        echo $db->error;
+        // echo $db->error;
         // echo "statement prepared<br></br>";
         $statement->execute();
         // $statement->debugDumpParams();
         // $result = $db->query($query);
-        $result = $statement->fetchAll();
+        $resultEvents = $statement->fetchAll();
         // echo $result;
         echo "<div id=\"content-wrap\">";
+
+        // $queryRSVP = "SELECT * from rsvp WHERE username='" . $user["username"] . "';";
+        // echo $queryRSVP . "</br>";
+        // $statementRSVP = $db->prepare($queryRSVP);
+        // $statementRSVP->debugDumpParams();
+        // echo "rsvp statement prepared</br>";
+        // $statementRSVP->execute();
+        // echo "rsvp statement executed</br>";
+        // $resultRSVP = $statementRSVP->fetchAll();
+        // echo $resultRSVP;
+
+        $query = "SELECT * from rsvp WHERE username='" . $user["username"] . "';";
+        // echo $query . "</br>";
+        $statement = $db->prepare($query);
+        // $statement->debugDumpParams();
+        // echo "rsvp statement prepared</br>";
+        $statement->execute();
+        // echo "rsvp statement executed</br>";
+        $result = $statement->fetchAll();
+        // echo $result;
+        // echo $result[0][0];
+        // echo $result[0][1];
+        // while($row = mysql_fetch_array($result)) {
+        //     echo "in while loop";
+        //     echo $row['column_name']; // Print a single column data
+        //     echo print_r($row);       // Print the entire row data
+        // }
+        // foreach($result as $row) {
+        //     echo "in for loop</br>";
+        //     echo $row['column_name'] . "</br>"; // Print a single column data
+        //     echo "printing entire row below</br>";
+        //     echo print_r($row) . "</br>";       // Print the entire row data
+        // }
+        $myEvents = array();
         foreach($result as $row) {
+            // echo $row[1];
+            array_push($myEvents, $row[1]);
+        }
+        // echo "outside foreach";
+        // echo print_r($myEvents);
+
+        foreach($resultEvents as $row) {
             // echo $row[0];
             // echo "<b><h3>$row[0]</h3></b><br/>";
             // echo "<h4>Date: $row[1]</h4><br/>";
@@ -112,20 +157,38 @@
             $date = $row[1];
             $venue = $row[2];
             $description = "None";
+            // echo "\$row[4]" . $row[4];
+            // echo "\$row[5]" . $row[5];
             if(!empty($row[3])) {
                 $description = $row[3];
             }
-            echo "<tr>
+            $going = false;
+            if(in_array($row[0], $myEvents)) {
+                $going = true;
+            }
+            if($going) {
+                echo "<tr>
                     <td>$title</td>
                     <td>$date</td>
                     <td>$venue</td>
                     <td>$description</td>
                     <td>
-                        <button class=\"btn bg-light btn-sm mb-3 mt-2 w-big\" style=\"background-color:red; border-color:blue\">
-                            Yes, I want to go!
-                        </button>
+                        <input type=\"button\" value=\"Yes, I want to go!\" disabled class=\"btn bg-light btn-sm mb-3 mt-2 w-big\" style=\"border-color:blue\"/>
                     </td>
                 </tr>";
+            }
+            else {
+                echo "<tr>
+                    <td>$title</td>
+                    <td>$date</td>
+                    <td>$venue</td>
+                    <td>$description</td>
+                    <td>
+                        <input type=\"button\" value=\"Yes, I want to go!\" class=\"btn btn-sm mb-3 mt-2 w-big\" style=\"background-color:green; border-color:blue\"/>
+                    </td>
+                </tr>";
+            }
+            
         // } catch(PDOException $e) {
         //     echo "Error: " . $e->getMessage();
         // }

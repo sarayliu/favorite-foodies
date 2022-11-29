@@ -308,6 +308,9 @@ class ProjectController {
     }
 
     private function allEvents() {
+        $user = [
+            "username" => $_SESSION["username"],
+        ];
         include("templates/allEvents.php");
     }
 
