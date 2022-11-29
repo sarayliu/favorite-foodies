@@ -89,7 +89,9 @@
         }
         else {
             foreach($result as $row) {
-                echo "<h5 style=\"text-align:center; color:green\">$row[1]</h5><br/>";
+                $title = $row[1];
+                echo "<h5 style=\"text-align:center; color:green\">$title</h5>";
+                echo "<center><button id='cancelRSVP' name='$title' class='btn btn-sm mb-3 mt-2 w-big' style='background-color:red; border-color:black'>Cancel reservation</button></center><br/>";
             }
         }
         // echo "done displaying results";

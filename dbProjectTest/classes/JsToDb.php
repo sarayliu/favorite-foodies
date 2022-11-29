@@ -116,7 +116,17 @@
         $statement->bindValue(':a', $_SESSION["username"]);
         $statement->bindValue(':b', $_POST['title']);
         $statement->execute();
-        $result = $statement->fetchAll();
-        echo $result;
+        // $result = $statement->fetchAll();
+        // echo $result;
+    }
+    if($funcName == "cancelRSVP") {
+        echo "in cancelRSVP function";
+        $query = "DELETE FROM rsvp WHERE username=:a AND title=:b;";
+        $statement =  $db->prepare($query);
+        $statement->bindValue(':a', $_SESSION["username"]);
+        $statement->bindValue(':b', $_POST['title']);
+        $statement->execute();
+        // $result = $statement->fetchAll();
+        // echo $result;
     }
 ?>
