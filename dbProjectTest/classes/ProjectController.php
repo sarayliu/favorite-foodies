@@ -122,7 +122,7 @@ class ProjectController {
                 else if (!empty($data)) 
                 {
                     // echo "!empty(data)";
-                    if ($hasher->CheckPassword($_POST['password'], $hasher->HashPassword($_POST['password']))) {
+                    if ($hasher->CheckPassword($data[0]['password'], $hasher->HashPassword($_POST['password']))) {
                         echo "Inside password verification statement<br>";
                         $_SESSION["username"] = $data[0]["username"]; 
                         setcookie("username", $data[0]["username"], time() + 3600);
