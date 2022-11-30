@@ -293,17 +293,18 @@ class ProjectController {
 
     private function updateUserInfo() {
         // get the post records
-        if (isset($_POST["username"])) 
+        if (isset($_POST["password"])) 
         {
-            $username = $_POST['username'];
+            $hasher = new PasswordHash(8, false);
+            $pass = $_POST['password'];
             $email = $_SESSION["email"];
-            setcookie("username", $_POST["username"], time() + 3600);
-            $_SESSION["username"] = $_POST["username"];
+            // setcookie("username", $_POST["username"], time() + 3600);
+            // $_SESSION["username"] = $_POST["username"];
             
             // $rs = $this->db->query("update users set username = ? where email = ?", $username, $email);
-            $query = "UPDATE users SET username = :a WHERE email = :b";
+            $query = "UPDATE users SET password = :a WHERE email = :b";
             $statement =  $this->db->prepare($query);
-            $statement->bindValue(':a', $_SESSION["username"]);
+            $statement->bindValue(':a', $hasher->HashPassword($pass));
             $statement->bindValue(':b', $_SESSION["email"]);
             $statement->execute();
             $result = $statement->fetchAll();
