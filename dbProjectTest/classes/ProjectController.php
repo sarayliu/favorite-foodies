@@ -101,7 +101,7 @@ class ProjectController {
                     $result = $statement->fetchAll();
                     $data = $result;
                     // echo "after data = result<br>";
-                    echo "$data";
+                    // var_dump($data);
                 }
                 catch (PDOExcption $e){
                     echo $e->getMessage();
@@ -122,7 +122,7 @@ class ProjectController {
                 else if (!empty($data)) 
                 {
                     // echo "!empty(data)";
-                    if ($hasher->CheckPassword($data[0]['password'], $hasher->HashPassword($_POST['password']))) {
+                    if ($hasher->CheckPassword($_POST["password"], $data[0]['password'])) {
                         echo "Inside password verification statement<br>";
                         $_SESSION["username"] = $data[0]["username"]; 
                         setcookie("username", $data[0]["username"], time() + 3600);
