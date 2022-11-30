@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"> 
 
     <meta name="author" content="Sara Liu">
-    <meta name="description" content="home page for app, CS4750 at UVA">
+    <meta name="description" content="All Events page">
     <meta name="keywords" content="food events">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -54,27 +54,23 @@
                   <a class="nav-link btn btn-default text-light" href="?command=myEvents">My Events</a>
               </li>
               <li class="nav-item">
+                  <a class="nav-link btn btn-default text-light" href="?command=createEvents">Create Events</a>
+              </li>
+              <li class="nav-item">
                   <a class="nav-link btn btn-danger text-light" href="?command=logout">Logout</a>
               </li>
           </ul>
       </div>
     </nav>
 
-    <div class="container">
+    <div id="page-container" class="container">
     <div class="media justify-content-center">
         <div class="media-body text-center">
             <h2 class="m-4">All Events</h2>
         </div>
     </div>
 
-    <table border="0" cellspacing="2" cellpadding="2"> 
-        <tr> 
-            <td> <font face="Arial">Title</font> </td> 
-            <td> <font face="Arial">Date</font> </td> 
-            <td> <font face="Arial">Venue</font> </td> 
-            <td> <font face="Arial">Description</font> </td> 
-            <td> <font face="Arial">RSVP</font> </td>
-        </tr>
+    <!-- <button id="rsvpButton" class="btn bg-success btn-sm mb-3 mt-2 w-big" style="background-color:green; border-color:blue">Yes, I want to go!</button> -->
 
     <?php
         // echo '<table border="0" cellspacing="2" cellpadding="2"> 
@@ -94,19 +90,73 @@
         // echo "session started<br></br>";
         // $query = "CREATE PROCEDURE SelectAllEvents AS SELECT * FROM event GO; EXEC SelectAllEvents; CALL SelectAllEvents();";
         // $query = "SELECT * from event;";
+        // $queryEvents = "CALL SelectAllEvents();";
+        // $queryRSVP = "SELECT * from rsvp WHERE username='" . $user["username"] . "';";
+        // $query = $queryEvents . " " . $queryRSVP;
         $query = "CALL SelectAllEvents();";
+        // echo $query . "</br>";
         // echo "query written<br></br>";
         // echo $db;
         // echo "db echoed<br></br>";
         $statement =  $db->prepare($query);
-        echo $db->error;
+        // echo $db->error;
         // echo "statement prepared<br></br>";
         $statement->execute();
         // $statement->debugDumpParams();
         // $result = $db->query($query);
+        $resultEvents = $statement->fetchAll();
+        // echo $result;
+        echo "<div id=\"content-wrap\">";
+        echo "<table border=\"0\" cellspacing=\"2\" cellpadding=\"2\"> 
+                <tr> 
+                    <td> <font face=\"Arial\">Title</font> </td> 
+                    <td> <font face=\"Arial\">Date</font> </td> 
+                    <td> <font face=\"Arial\">Venue</font> </td> 
+                    <td> <font face=\"Arial\">Description</font> </td> 
+                    <td> <font face=\"Arial\">RSVP</font> </td>
+                </tr>";
+
+        // $queryRSVP = "SELECT * from rsvp WHERE username='" . $user["username"] . "';";
+        // echo $queryRSVP . "</br>";
+        // $statementRSVP = $db->prepare($queryRSVP);
+        // $statementRSVP->debugDumpParams();
+        // echo "rsvp statement prepared</br>";
+        // $statementRSVP->execute();
+        // echo "rsvp statement executed</br>";
+        // $resultRSVP = $statementRSVP->fetchAll();
+        // echo $resultRSVP;
+
+        $query = "SELECT * from rsvp WHERE username='" . $user["username"] . "';";
+        // echo $query . "</br>";
+        $statement = $db->prepare($query);
+        // $statement->debugDumpParams();
+        // echo "rsvp statement prepared</br>";
+        $statement->execute();
+        // echo "rsvp statement executed</br>";
         $result = $statement->fetchAll();
         // echo $result;
+        // echo $result[0][0];
+        // echo $result[0][1];
+        // while($row = mysql_fetch_array($result)) {
+        //     echo "in while loop";
+        //     echo $row['column_name']; // Print a single column data
+        //     echo print_r($row);       // Print the entire row data
+        // }
+        // foreach($result as $row) {
+        //     echo "in for loop</br>";
+        //     echo $row['column_name'] . "</br>"; // Print a single column data
+        //     echo "printing entire row below</br>";
+        //     echo print_r($row) . "</br>";       // Print the entire row data
+        // }
+        $myEvents = array();
         foreach($result as $row) {
+            // echo $row[1];
+            array_push($myEvents, $row[1]);
+        }
+        // echo "outside foreach";
+        // echo print_r($myEvents);
+
+        foreach($resultEvents as $row) {
             // echo $row[0];
             // echo "<b><h3>$row[0]</h3></b><br/>";
             // echo "<h4>Date: $row[1]</h4><br/>";
@@ -114,20 +164,56 @@
             $date = $row[1];
             $venue = $row[2];
             $description = "None";
+            // echo "\$row[4]" . $row[4];
+            // echo "\$row[5]" . $row[5];
             if(!empty($row[3])) {
                 $description = $row[3];
             }
-            echo "<tr>
+            $going = false;
+            if(in_array($row[0], $myEvents)) {
+                $going = true;
+            }
+            // <input type=\"submit\" value=\"Yes, I want to go!\" disabled class=\"btn bg-light btn-sm mb-3 mt-2 w-big\" style=\"border-color:blue\"/>
+            if($going) {
+                echo "<tr>
+                    <td>$title</td>
+                    <td>$date</td>
+                    <td>$venue</td>
+                    <td>$description</td>
+                    <td><button class='btn bg-success btn-sm mb-3 mt-2 w-big' style='background-color:green; border-color:blue' disabled>Yes, I want to go!</button></td>
+                </tr>";
+            }
+            else {
+                // echo "<tr>
+                //     <td>$title</td>
+                //     <td>$date</td>
+                //     <td>$venue</td>
+                //     <td>$description</td>
+                //     <td>
+                //         <button id=\"rsvpButton\" name=\"$title\" class=\"btn bg-success btn-sm mb-3 mt-2 w-big\" style=\"background-color:green; border-color:blue\">Yes, I want to go!</button>
+                //     </td>
+                // </tr>";
+                // echo '<tr>
+                //     <td>$title</td>
+                //     <td>$date</td>
+                //     <td>$venue</td>
+                //     <td>$description</td>
+                //     <td>
+                //         <button id="rsvpButton" name=$title class="btn bg-success btn-sm mb-3 mt-2 w-big" style="background-color:green; border-color:blue">Yes, I want to go!</button>
+                //     </td>
+                // </tr>';
+                // $buttonID = 'rsvpButton' . 
+                echo "<tr>
                     <td>$title</td>
                     <td>$date</td>
                     <td>$venue</td>
                     <td>$description</td>
                     <td>
-                        <button class=\"btn bg-light btn-sm mb-3 mt-2 w-big\" style=\"background-color:red; border-color:blue\">
-                            Yes, I want to go!
-                        </button>
+                        <button id='rsvpButton' name='$title' class='btn bg-success btn-sm mb-3 mt-2 w-big' style='background-color:green; border-color:blue'>Yes, I want to go!</button>
                     </td>
                 </tr>";
+            }
+            
         // } catch(PDOException $e) {
         //     echo "Error: " . $e->getMessage();
         // }
@@ -149,17 +235,27 @@
         //     echo $row;
         }
         // $result->free();
+        echo "</table></div>";
 
-        // echo "<center>
-        //         <footer class=\"primaryFooter containerClass\">
-        //         <small class=\"copyrightClass\">
-        //             &copy; 2022 Copyright:
-        //             <a class=\"text-reset fw-bold\" >Sneha Iyer, Medha Boddu, Sara Liu, Neha Bagalkot, CS 4750 UVA</a>
-        //         </small>
-        //         </footer>
-        //     </center>";
+        echo "<center>
+                <footer id=\"footer\" class=\"primaryFooter containerClass\">
+                <small class=\"copyrightClass\">
+                    &copy; 2022 Copyright:
+                    <a class=\"text-reset fw-bold\" >Sneha Iyer, Medha Boddu, Sara Liu, Neha Bagalkot, CS 4750 UVA</a>
+                </small>
+                </footer>
+            </center>";
     ?>
 
+    <!-- <center>
+        <footer id="footer" class="primaryFooter containerClass">
+        <small class="copyrightClass">
+            &copy; 2022 Copyright:
+            <a class="text-reset fw-bold" >Sneha Iyer, Medha Boddu, Sara Liu, Neha Bagalkot, CS 4750 UVA</a>
+        </small>
+        </footer>
+    </center>     -->
+    </div>
     <script type="module" src="scriptMod.js" defer></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>

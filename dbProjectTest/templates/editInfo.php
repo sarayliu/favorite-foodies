@@ -55,19 +55,12 @@
                     <a class="nav-link btn btn-default text-light" href="?command=myEvents">My Events</a>
                 </li>
                 <li class="nav-item">
+                  <a class="nav-link btn btn-default text-light" href="?command=createEvents">Create Events</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link btn btn-danger text-light" href="?command=logout">Logout</a>
                 </li>
             </ul>
-        </div>
-
-        <div class="d-flex flex-start mx-4">
-        <input
-                type="text"
-                id="search"
-                placeholder="Searchbar"
-                class="search mx-2 form-control"
-            />
-        <button id="searchButton" class="btn bg-success text-light">Search</button>
         </div>
         </nav>
 

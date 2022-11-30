@@ -57,57 +57,46 @@
                     <a class="nav-link btn btn-default text-light" href="?command=myEvents">My Events</a>
                 </li>
                 <li class="nav-item">
+                  <a class="nav-link btn btn-default text-light" href="?command=createEvents">Create Events</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link btn btn-danger text-light" href="?command=logout">Logout</a>
                 </li>
             </ul>
         </div>
-
-        <div class="d-flex flex-start mx-4">
-        <input
-                type="text"
-                id="search"
-                placeholder="Searchbar"
-                class="search mx-2 form-control"
-            />
-        <button id="searchButton" class="btn bg-success text-light">Search</button>
-        </div>
         </nav>
 
-
-        <div class="container" style="margin-top: 15px;">
-            <div class="row col-xs-8">
-                <h1>CS 4750 Project -- Entering a Review</h1>
-                <h3>Hello <?=$user["username"]?>! Email: <?=$user["email"]?></h3>
-            </div>
-            <div class="row">
-                <div class="col-xs-8 mx-auto">
+        <center>
+        <div class="container w-50">
+        <div class="media justify-content-center">
+        <div class="media-body text-center">
+            <h2 class="m-4">Create a Review!</h2>
+        </div>
+    </div>
                
                 <!-- form to create new review -->
                 <form name="form2" id="form2" action="?command=seeReviews" method="post"> <!-- onsubmit="return(checkForm())"> -->
                     <div class="form-group">
-                    <label for="url">Food ID </label>
-                    <input type="text" name="url" id="url">
+                    <label for="url" class="form-label">Food ID: </label>
+                    <input type="text" name="url" id="url" class="form-control">
                     </div>
-                    <div class="form-group">
-                    <label for="foodname">Food Name</label>
-                    <input type="text" name="foodname" id="foodname">
+                    <div class="form-group mb-3 mt-3">
+                    <label for="foodname" class="form-label">Food Name:</label>
+                    <input type="text" name="foodname" id="foodname" class="form-control">
                     <small id="foodnameHelp" class="form-text text-muted">Please enter name exactly as you see it on the food card.</small>
                     </div>
-                    <p>
-                        <label for="comment">Comment</label>
+                    <div class="mb-3 mt-3">
+                        <label for="comment" class="form-label">Comment:</label>
                         <!--<input type="text" name="comment" id="comment"> -->
-                        <textarea id="comment" name="comment" rows="4" cols="50">   </textarea>
-                    </p>
+                        <textarea id="comment" name="comment" rows="4" cols="50" class="form-control">   </textarea>
+</div>
         
-                    <p>&nbsp;</p>
-                    <p>
                         <input type="submit" class="btn btn-primary" name="Submit" id="Submit" value="Submit">
-                    </p>
                 </form>
                 </div>
-            </div>
-        </div>
-
+</center>
+<br>
+<br>
         <center>
         <footer class="primaryFooter containerClass"> <!-- class="text-center bg-light text-muted p-1 fixed-bottom mt-5"> -->
             <small class="copyrightClass">

@@ -2,10 +2,10 @@
 {/* <script src="dotenv.js"></script>
 console.log("in scriptMod"); 
 console.log(process.env.SPOONACULAR_API_KEY); */}
-// import { spoonacular_api_key } from "./env-variables.js";
+import { spoonacular_api_key } from "./env-variables.js";
 // const spoonacular_api_key = require(env-variables.js);
 // console.log(spoonacular_api_key);
-const API_KEY = '90921f3219034ec79939dba1fb8c4711'; // Insert your API key here
+const API_KEY = spoonacular_api_key;
 const NUM_RESULTS = 8;
 const API_BASE_URL = 'https://api.spoonacular.com/recipes/'
 const API_SEARCH_URL = API_BASE_URL + 'complexSearch?apiKey=' + API_KEY + '&number=' + NUM_RESULTS + '&query=';
@@ -47,7 +47,8 @@ function displayRecipeInfo(recipe_info) {
 }
 
 $('#searchButton').on('click', function() {
-
+    // alert("in searchButton scriptMod.js");
+    // console.log("in searchButton scriptMod.js");
     $.ajax({
         type: 'GET',
         url: API_SEARCH_URL + $search.val(),
@@ -77,6 +78,7 @@ $('#searchButton').on('click', function() {
                         recipe.rating = parseInt(rating);
                         recipe.fillcolor = fillcolor;
                         addRecipe(recipe);
+                        // alert('See results below');
                     },
                     error: function() {
                         alert('An error occurred while retrieving recipes.');
@@ -186,4 +188,61 @@ $('#content').delegate('.favorite', 'click', function() {
 $myModal.delegate('.close-modal', 'click', function() {
     console.log("Closing modal");
     $('#myModal').modal('hide');
+});
+
+$('#rsvpButton').on('click', function() {
+    // e.preventDefault();
+    console.log("in rsvpButton scriptMod.js"); //will print to info under Console
+    $.ajax({
+        type: 'POST',
+        url: 'classes/JsToDb.php',
+        data: {
+            functionname: 'addRSVP', 
+            title: $(this).attr('name'),
+        },
+        success: function(result) {
+            // result.forEach(function (r, i) {
+            //     console.log(r, i)
+            // });
+            // for(const r of $result) {
+            //     console.log(r);
+            // }
+            // console.log(result); // Array
+            // console.log($(this)); // this is no longer the same this in data
+            // document.getElementById("rsvpButton").disabled = true;
+            // $("#rsvpButton").attr("disabled", true);
+            alert("RSVP successful! Refresh the page to see updated disabled button");
+        },
+        error: function(result) {
+            alert("error with RSVP");
+        }
+    });
+});
+
+$('#cancelRSVP').on('click', function() {
+    console.log("in cancelRSVP scriptMod.js");
+    $.ajax({
+        type: 'POST',
+        url: 'classes/JsToDb.php',
+        data: {
+            functionname: 'cancelRSVP', 
+            title: $(this).attr('name'),
+        },
+        success: function(result) {
+            // result.forEach(function (r, i) {
+            //     console.log(r, i)
+            // });
+            // for(const r of $result) {
+            //     console.log(r);
+            // }
+            // console.log(result); // Array
+            // console.log($(this)); // this is no longer the same this in data
+            // document.getElementById("rsvpButton").disabled = true;
+            // $("#rsvpButton").attr("disabled", true);
+            alert("Cancellation successful! Refresh the page to see updated disabled button");
+        },
+        error: function(result) {
+            alert("error with cancellation");
+        }
+    });
 });
