@@ -71,16 +71,6 @@
                 </li>
             </ul>
         </div>
-
-        <div class="d-flex flex-start mx-4">
-        <input
-                type="text"
-                id="search"
-                placeholder="Searchbar"
-                class="search mx-2 form-control"
-            />
-        <button id="searchButton" class="btn bg-success text-light">Search</button>
-        </div>
         </nav>
 
         <div class="container w-75">
