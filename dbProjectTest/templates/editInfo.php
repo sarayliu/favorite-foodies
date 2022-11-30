@@ -63,32 +63,30 @@
             </ul>
         </div>
         </nav>
+<center>
+        <div class="container w-50">
 
-        <div class="container" style="margin-top: 15px;">
-            <div class="row col-xs-8">
-                <h1>CS4750 Project -- Edit User Information</h1>
-                <h3>Hello <?=$user["username"]?>! Email: <?=$user["email"]?></h3>
-            </div>
-            <div class="row">
-                <div class="col-xs-8 mx-auto">
+         <div class="media justify-content-center">
+        <div class="media-body text-center">
+            <h2 class="m-4">Edit User Information!</h2>
+        </div>
+    </div>
               
                 <form name="form3" id="form3" action="?command=homePage" method="post">
                     <div class="form-group">
-                    <p>
-                        <label for="username">Edit Username</label>
-                        <input type="text" name="username" id="username" required>
-                    </p>
+                    <div class="mb-3 mt-3">
+
+                        <label for="password" class="form-label">Edit Password:</label>
+                        <input type="text" name="password" id="password" class="form-control" required>
+                    </div>
                     </div>
                               
-                    <p>&nbsp;</p>
-                    <p>
+
                         <input type="submit" class="btn btn-primary" name="Submit" id="Submit" value="Submit">
-                    </p>
                 </form>
                 </div>
-            </div>
-        </div>
-
+</center>
+<br>
         <center>
         <footer class="primaryFooter containerClass"> <!-- class="text-center bg-light text-muted p-1 fixed-bottom mt-5"> -->
             <small class="copyrightClass">
