@@ -221,7 +221,8 @@ $('#content-wrap').on('click', '#rsvpButton', function() {
     });
 });
 
-$('#cancelRSVP').on('click', function() {
+// $('#cancelRSVP').on('click', function() {
+$('#content-wrap').on('click', '#cancelButton', function() {
     console.log("in cancelRSVP scriptMod.js");
     $.ajax({
         type: 'POST',
