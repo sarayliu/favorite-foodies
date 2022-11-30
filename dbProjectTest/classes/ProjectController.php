@@ -235,7 +235,7 @@ class ProjectController {
        // get the post records
        if (isset($_POST["url"]) and isset($_POST["comment"]) and isset($_POST["foodname"]) ) 
        {
-            echo "url and comment are set\n";
+            // echo "url and comment are set\n";
             $id = $_POST['url'];
             $comment = $_POST['comment'];
             $fname = strtolower($_POST['foodname']); 
@@ -277,7 +277,7 @@ class ProjectController {
             $_SESSION["username"] = $_POST["username"];
             
             // $rs = $this->db->query("update users set username = ? where email = ?", $username, $email);
-            $query = "UPDATE user SET username = :a WHERE email = :b";
+            $query = "UPDATE users SET username = :a WHERE email = :b";
             $statement =  $this->db->prepare($query);
             $statement->bindValue(':a', $_SESSION["username"]);
             $statement->bindValue(':b', $_SESSION["email"]);
