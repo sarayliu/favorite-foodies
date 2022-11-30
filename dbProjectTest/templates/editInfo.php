@@ -68,7 +68,7 @@
 
          <div class="media justify-content-center">
         <div class="media-body text-center">
-            <h2 class="m-4">Edit User Information!</h2>
+            <h2 class="m-4">Edit User Information</h2>
         </div>
     </div>
               

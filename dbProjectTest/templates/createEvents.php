@@ -66,7 +66,7 @@
     <div class="container w-50">
     <div class="media justify-content-center">
         <div class="media-body text-center">
-            <h2 class="m-4">Create an Event!</h2>
+            <h2 class="m-4">Create an Event</h2>
             <h4 class="m-4">All fields are required except for the description.</h4>
         </div>
     </div>

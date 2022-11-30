@@ -70,7 +70,7 @@
         <div class="container w-50">
         <div class="media justify-content-center">
         <div class="media-body text-center">
-            <h2 class="m-4">Create a Review!</h2>
+            <h2 class="m-4">Create a Review</h2>
         </div>
     </div>
                
