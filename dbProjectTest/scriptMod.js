@@ -6,7 +6,8 @@ import { spoonacular_api_key } from "./env-variables.js";
 // const spoonacular_api_key = require(env-variables.js);
 // console.log(spoonacular_api_key);
 const API_KEY = spoonacular_api_key;
-const NUM_RESULTS = 8;
+// const API_KEY = '';
+const NUM_RESULTS = 5;
 const API_BASE_URL = 'https://api.spoonacular.com/recipes/'
 const API_SEARCH_URL = API_BASE_URL + 'complexSearch?apiKey=' + API_KEY + '&number=' + NUM_RESULTS + '&query=';
 
@@ -190,7 +191,8 @@ $myModal.delegate('.close-modal', 'click', function() {
     $('#myModal').modal('hide');
 });
 
-$('#rsvpButton').on('click', function() {
+// $('#rsvpButton').on('click', function() {
+$('#content-wrap').on('click', '#rsvpButton', function() {
     // e.preventDefault();
     console.log("in rsvpButton scriptMod.js"); //will print to info under Console
     $.ajax({
