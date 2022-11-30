@@ -78,17 +78,17 @@
                 <form name="form2" id="form2" action="?command=seeReviews" method="post"> <!-- onsubmit="return(checkForm())"> -->
                     <div class="form-group">
                     <label for="url" class="form-label">Food ID: </label>
-                    <input type="text" name="url" id="url" class="form-control">
+                    <input type="text" name="url" id="url" class="form-control" required>
                     </div>
                     <div class="form-group mb-3 mt-3">
                     <label for="foodname" class="form-label">Food Name:</label>
-                    <input type="text" name="foodname" id="foodname" class="form-control">
+                    <input type="text" name="foodname" id="foodname" class="form-control" required>
                     <small id="foodnameHelp" class="form-text text-muted">Please enter name exactly as you see it on the food card.</small>
                     </div>
                     <div class="mb-3 mt-3">
                         <label for="comment" class="form-label">Comment:</label>
                         <!--<input type="text" name="comment" id="comment"> -->
-                        <textarea id="comment" name="comment" rows="4" cols="50" class="form-control">   </textarea>
+                        <textarea id="comment" name="comment" rows="4" cols="50" class="form-control" required>   </textarea>
 </div>
         
                         <input type="submit" class="btn btn-primary" name="Submit" id="Submit" value="Submit">
