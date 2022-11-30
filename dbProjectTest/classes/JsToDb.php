@@ -5,6 +5,14 @@
     $funcName = $_POST['functionname'];
     $url = $_POST['url'];
     $fav = $_POST['favorite'];
+    if($_POST['functionname'] == "getsize") {
+        $query = "select family_meal from size where serving_size = :a;";
+        $statement =  $db->prepare($query);
+        $statement->bindValue(':a', $_POST['serving_size']);
+        $statement->execute();
+        $result = $statement->fetchAll();
+        echo $result[0][0];
+    }
     if($_POST['functionname'] == "get") {
         $query = "select rating from food where food_name = :a;";
         $statement =  $db->prepare($query);

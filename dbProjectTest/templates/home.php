@@ -63,7 +63,9 @@
                   <a class="nav-link btn btn-default text-light" href="?command=homePage">Home</a>
 
               </li>
-             
+              <li class="nav-item">
+                  <a class="nav-link btn btn-default text-light" href="?command=seeFavorites">See Favorites</a>
+              </li>
               <li class="nav-item">
                   <!-- <a class="nav-link text-dark" href="seeReviews.php"> See Reviews </a> -->
                   <a class="nav-link btn btn-default text-light" href="?command=seeReviews">See Reviews</a>
@@ -296,6 +298,7 @@
               <hr />
               <h4>Summary</h4>
               <p>{{{summary}}}</p>
+              <p>Family Meal: {{family}}</p>
               <hr />
               <h4>Ingredients</h4>
                 <ul>

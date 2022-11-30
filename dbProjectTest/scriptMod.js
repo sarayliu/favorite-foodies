@@ -99,8 +99,27 @@ $('#content').delegate('.view-info', 'click', function() {
         type: 'GET',
         url: API_BASE_URL + id + '/information?apiKey=' + API_KEY,
         success: function(recipe_info) {
-            $('#myModal').modal('show');
-            displayRecipeInfo(recipe_info);
+            $.ajax({
+                type: 'POST',
+                url: 'classes/JsToDb.php',
+                data: {
+                    functionname: 'getsize',
+                    serving_size: recipe_info['servings'],
+                },
+                success: function(recipe_fam) {
+                    if(recipe_fam == "0") {
+                        recipe_info.family = "No";
+                    }
+                    else {
+                        recipe_info.family = "Yes";
+                    }
+                    $('#myModal').modal('show');
+                    displayRecipeInfo(recipe_info);
+                },
+                error: function() {
+                    alert('An error occurred while displaying the recipe information.');
+                }
+            })
         },
         error: function() {
             alert('An error occurred while displaying the recipe information.');
