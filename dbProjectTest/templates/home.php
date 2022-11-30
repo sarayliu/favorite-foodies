@@ -161,12 +161,13 @@
         <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
           <div class="accordion-body bg-light">
               <ul>
+                  <li>Click on See Favorites to view your favorite foods</li>
                   <li>Click on See Reviews to view all your reviews</li>
                   <li>Click on Enter Review to write a review about a certain food</li>
                   <li>Click on Edit/Update User Info to change user information</li>
                   <li>Click on All Events to view event information and rsvp to any event</li>
                   <li>Click on My Events to view which events you rsvp'd to</li>
-                  <li>Click on Favorites to view your favorited foods</li>
+                  <li>Click on Create Events to create a new event for everyone</li>
                   <li>Click on Logout to logout</li>
 
               </ul>
