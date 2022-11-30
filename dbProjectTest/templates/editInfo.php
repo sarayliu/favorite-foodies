@@ -76,7 +76,7 @@
                     <div class="form-group">
                     <p>
                         <label for="username">Edit Username</label>
-                        <input type="text" name="username" id="username">
+                        <input type="text" name="username" id="username" required>
                     </p>
                     </div>
                               

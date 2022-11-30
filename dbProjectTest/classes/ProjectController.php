@@ -76,9 +76,10 @@ class ProjectController {
     function login() {
         // global $db;
         $error_msg = "";
-        if (isset($_POST["email"])) 
+        if (isset($_POST["email"]) and isset($_POST["username"])) 
         {
             $email = $_POST["email"];
+            $uname = $_POST["username"];
             $thing = $this->validateEmail($email);
             if($thing == true){
                 // echo "email is valid<br>";
@@ -86,13 +87,14 @@ class ProjectController {
 
                 // $data = $this->db->query("select * from users where email = ?;", $_POST["email"]);
                 try{
-                    $query = "SELECT * FROM users WHERE email = :email";
+                    $query = "SELECT * FROM users WHERE email = :email AND username = :uname";
                     // echo "after query string<br>";
                     // echo $this->db;
                     // echo "after printing db<br>";
                     $statement =  $this->db->prepare($query);
                     // echo "after prepare<br>";
                     $statement->bindValue(':email', $email);
+                    $statement->bindValue(':uname', $uname);
                     // echo "after bind value<br>";
                     $statement->execute();
                     // echo "after exec<br>";
@@ -121,7 +123,7 @@ class ProjectController {
                 {
                     // echo "!empty(data)";
                     if ($hasher->CheckPassword($_POST['password'], $hasher->HashPassword($_POST['password']))) {
-                        // echo "Inside password verification statement<br>";
+                        echo "Inside password verification statement<br>";
                         $_SESSION["username"] = $data[0]["username"]; 
                         setcookie("username", $data[0]["username"], time() + 3600);
                         $_SESSION["email"] = $data[0]["email"];
