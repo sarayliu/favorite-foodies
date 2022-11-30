@@ -2,11 +2,10 @@
 {/* <script src="dotenv.js"></script>
 console.log("in scriptMod"); 
 console.log(process.env.SPOONACULAR_API_KEY); */}
-// import { spoonacular_api_key } from "./env-variables.js";
-const spoonacular_api_key = require(env-variables.js);
+import { spoonacular_api_key } from "./env-variables.js";
+// const spoonacular_api_key = require(env-variables.js);
 // console.log(spoonacular_api_key);
 const API_KEY = spoonacular_api_key;
-// const API_KEY = '';
 const NUM_RESULTS = 5;
 const API_BASE_URL = 'https://api.spoonacular.com/recipes/'
 const API_SEARCH_URL = API_BASE_URL + 'complexSearch?apiKey=' + API_KEY + '&number=' + NUM_RESULTS + '&query=';
@@ -19,7 +18,6 @@ var recipeCardTemplate = $('#recipeCardTemplate').html();
 var recipeInfoTemplate = $('#recipeInfoTemplate').html();
 
 function addRecipe(recipe) {
-    $recipes.empty();
     $recipes.append(Mustache.render(recipeCardTemplate, recipe));
 }
 
@@ -50,6 +48,7 @@ function displayRecipeInfo(recipe_info) {
 $('#searchButton').on('click', function() {
     // alert("in searchButton scriptMod.js");
     // console.log("in searchButton scriptMod.js");
+    $recipes.empty();
     $.ajax({
         type: 'GET',
         url: API_SEARCH_URL + $search.val(),
