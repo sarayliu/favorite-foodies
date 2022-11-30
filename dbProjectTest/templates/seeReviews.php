@@ -96,7 +96,7 @@
                     
                         <?php echo $deleteMsg; ?>
                         <div class="table-responsive">
-                            <table class="table table-hover text-center w-auto">
+                            <table class="table table-hover text-center">
                                 <thead class="table-dark">
                                     <tr>
                                         <th>Reviews (Sorted by alphabetic order)</th>
