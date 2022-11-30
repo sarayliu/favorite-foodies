@@ -91,11 +91,13 @@
             echo "<b><h4 style='color:green' class='text-center'>You are not going to any events. RSVP on the All Events tab!</h4></b><br/>";
         }
         else {
+            echo "<div id='myEventsContent'>";
             foreach($result as $row) {
                 $title = $row[1];
                 echo "<h5 style=\"text-align:center; color:green\">$title</h5>";
                 echo "<center><button id='cancelRSVP' name='$title' class='btn btn-sm mb-3 mt-2 w-big' style='background-color:red; border-color:black'>Cancel reservation</button></center><br/>";
             }
+            echo "</div>";
         }
         // echo "done displaying results";
         // $result->free();

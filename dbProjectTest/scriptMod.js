@@ -2,8 +2,8 @@
 {/* <script src="dotenv.js"></script>
 console.log("in scriptMod"); 
 console.log(process.env.SPOONACULAR_API_KEY); */}
-import { spoonacular_api_key } from "./env-variables.js";
-// const spoonacular_api_key = require(env-variables.js);
+// import { spoonacular_api_key } from "./env-variables.js";
+const spoonacular_api_key = require(env-variables.js);
 // console.log(spoonacular_api_key);
 const API_KEY = spoonacular_api_key;
 // const API_KEY = '';
@@ -222,7 +222,7 @@ $('#content-wrap').on('click', '#rsvpButton', function() {
 });
 
 // $('#cancelRSVP').on('click', function() {
-$('#content-wrap').on('click', '#cancelButton', function() {
+$('#myEventsContent').on('click', '#cancelRSVP', function() {
     console.log("in cancelRSVP scriptMod.js");
     $.ajax({
         type: 'POST',
