@@ -49,7 +49,7 @@
                 </li>
                 <li class="nav-item">
                     <!-- <a class="nav-link text-dark" href="seeReviews.php"> See Reviews </a> -->
-                    <a class="nav-link btn btn-default text-light" href="?command=enterReview">Enter a Reviews</a>
+                    <a class="nav-link btn btn-default text-light" href="?command=enterReview">Enter a Review</a>
                 </li>
                 <li class="nav-item">
                     <!-- <a class="nav-link text-dark" href="editInfo.html"> Edit Information </a> -->
@@ -100,7 +100,7 @@
                                 <thead class="table-dark">
                                     <tr>
                                         <th>Reviews (Sorted by alphabetic order)</th>
-                                        <th>Food/Dish Name</th>
+                                        <th>Food/Dish Url</th>
                                         <th>Comment</th>
         </tr>
                                 </thead>
