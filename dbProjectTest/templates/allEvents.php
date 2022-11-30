@@ -107,14 +107,16 @@
         $resultEvents = $statement->fetchAll();
         // echo $result;
         echo "<div id=\"content-wrap\">";
-        echo "<table border=\"0\" cellspacing=\"2\" cellpadding=\"2\"> 
+        echo "<table border=\"0\" cellspacing=\"2\" cellpadding=\"2\" class='table table-hover text-center'> 
+        <thead class='table-dark'>
                 <tr> 
-                    <td> <font face=\"Arial\">Title</font> </td> 
-                    <td> <font face=\"Arial\">Date</font> </td> 
-                    <td> <font face=\"Arial\">Venue</font> </td> 
-                    <td> <font face=\"Arial\">Description</font> </td> 
-                    <td> <font face=\"Arial\">RSVP</font> </td>
-                </tr>";
+                    <th>Title</th> 
+                    <th>Date</th> 
+                    <th>Venue</th> 
+                    <th>Description</th> 
+                    <th>RSVP</th>
+                </tr>
+                </thead>";
 
         // $queryRSVP = "SELECT * from rsvp WHERE username='" . $user["username"] . "';";
         // echo $queryRSVP . "</br>";
@@ -175,12 +177,12 @@
             }
             // <input type=\"submit\" value=\"Yes, I want to go!\" disabled class=\"btn bg-light btn-sm mb-3 mt-2 w-big\" style=\"border-color:blue\"/>
             if($going) {
-                echo "<tr>
+                echo "<tr class='table-secondary'>
                     <td>$title</td>
                     <td>$date</td>
                     <td>$venue</td>
                     <td>$description</td>
-                    <td><button class='btn bg-success btn-sm mb-3 mt-2 w-big' style='background-color:green; border-color:blue' disabled>Yes, I want to go!</button></td>
+                    <td><button class='btn bg-success btn-sm mb-3 mt-2 w-big' style='background-color:green;' disabled>Yes, I want to go!</button></td>
                 </tr>";
             }
             else {
@@ -203,7 +205,7 @@
                 //     </td>
                 // </tr>';
                 // $buttonID = 'rsvpButton' . 
-                echo "<tr>
+                echo "<tr class='table-secondary'>
                     <td>$title</td>
                     <td>$date</td>
                     <td>$venue</td>
